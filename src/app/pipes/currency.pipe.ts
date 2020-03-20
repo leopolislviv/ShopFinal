@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CurrencyPipe implements PipeTransform {
 
   transform(value: any): string {
-    return `${value} $`;
+    return `$${value}`;
   }
 
 }

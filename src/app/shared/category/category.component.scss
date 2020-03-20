@@ -4,7 +4,7 @@
 }
 
 .example-card {
-  max-width: 200px;
+  max-width: 300px;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   justify-content: space-between;
 
   &-basket {
-    background-color: yellowgreen;
+    background-color: rgb(211, 44, 161);
     color: #fff;
   }
 }
@@ -30,7 +30,7 @@
 
   &-val {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: bold;
     color: #6b9517;
   }
 }
