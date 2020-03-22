@@ -4,15 +4,16 @@
     class="example-card">
     <mat-card-header>
       <mat-card-title>{{ car.brand }}</mat-card-title>
-      <mat-card-subtitle>{{ car.model }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ car.article }}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src={{car.img}} alt="car">
     <mat-card-content>
-      <p>{{ car.description }}</p>
+      <p>{{ car.size }}</p>
+      <p>{{ car.color }}</p>
     </mat-card-content>
     <div class="price">
-      <span class="price-val">{{ car.year | year }}</span>
-      <span class="price-val">{{ car.price | currency }}</span>
+      <!-- <span class="price-val">{{ car.year | year }}</span> -->
+      <span class="price-val">{{ car.price | currency:'UAH':'symbol-narrow':'ua' }}</span>
     </div>
     <mat-card-actions class="btns">
       <button

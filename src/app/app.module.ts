@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
+// import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     CoreModule,
     SharedModule,
     HttpClientModule,
+    // NgxImageZoomModule
   ],
   providers: [],
   bootstrap: [AppComponent]

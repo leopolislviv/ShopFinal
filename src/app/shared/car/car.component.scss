@@ -29,3 +29,13 @@
     color: #6b9517;
   }
 }
+
+img {
+  max-width: 330px;
+  border-radius: 2%;
+  margin: auto;
+}
+
+img:hover{
+  transform: scale(1.5);
+}

@@ -11,7 +11,7 @@ import {Car} from '../interfaces/car.interface';
 export class CrudService {
 
   private readonly URL: string = environment.apiUrl;
-  private readonly ALL_CARS: string = 'All cars';
+  private readonly ALL_CARS: string = 'All T-shirts';
 
 
   constructor(private http: HttpClient) {
