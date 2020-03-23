@@ -14,6 +14,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {PipeModule} from '../pipes/pipe.module';
 import { CarComponent } from './car/car.component';
+import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const comp: any = [
   CategoryComponent,
@@ -37,7 +39,9 @@ const comp: any = [
     MatSnackBarModule,
     MatCardModule,
     MatChipsModule,
-    PipeModule
+    PipeModule,
+    FormsModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule {
