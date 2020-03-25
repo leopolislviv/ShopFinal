@@ -33,7 +33,8 @@ export class CategoryComponent {
     this.route.paramMap
       .pipe(
         pluck('params', 'cat'),
-        switchMap((param) => this.crudService.getFilteredCars(param)),
+        switchMap((param) => this.crudService.getFilteredCars(param, param)),
+        //switchMap((param) => this.crudService.getFilteredGenderMale(param)),
       )
       .subscribe(
         (cars: Car[]) =>  this.cars = cars,

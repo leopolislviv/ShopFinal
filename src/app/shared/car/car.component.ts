@@ -26,5 +26,10 @@ export class CarComponent {
       .subscribe(
         (car: Car) => this.car = car,
   );
+  
   }
+
+
+
+  
 }

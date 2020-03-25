@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "comerce-example"
+  "defaultProject": "comerce-example",
+  "cli": {
+    "analytics": "b82b2271-b21a-46a2-ae93-9aa1bfeec49b"
+  }
 }

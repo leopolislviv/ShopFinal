@@ -6,7 +6,10 @@
       <mat-card-title>{{ car.brand }}</mat-card-title>
       <mat-card-subtitle>{{ car.article }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src={{car.img}} alt="car">
+    <div class="img-zoom">
+      <img mat-card-image src={{car.img}} alt="car">
+    </div>
+    
     <mat-card-content>
       <p>{{ car.size }}</p>
       <p>{{ car.color }}</p>

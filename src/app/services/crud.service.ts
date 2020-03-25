@@ -13,6 +13,8 @@ export class CrudService {
   private readonly URL: string = environment.apiUrl;
   private readonly ALL_CARS: string = 'All T-shirts';
 
+  private readonly MEN_SHIRTS: string = 'Men T-shirts';
+
 
   constructor(private http: HttpClient) {
   }
@@ -37,16 +39,22 @@ export class CrudService {
         map((cars: Car[]) => cars.map((car: Car) => car.brand)),
         map((brands: string[]) => [...new Set(brands)]),
         map((brands: string[]) => brands.sort((a: string, b: string) => a > b ? 1 : -1)),
-        map((brandsNames: string[]) => [ this.ALL_CARS, ...brandsNames ]),
+        map((brandsNames: string[]) => [ this.ALL_CARS, this.MEN_SHIRTS, ...brandsNames ]),
       );
   }
 
-  public getFilteredCars(brand): Observable<Car[]> {
+
+  public getFilteredCars(brand, gender): Observable<Car[]> {
     return this.http.get(`${this.URL}/cars`)
       .pipe(
-        map((cars: Car[]) => cars.filter((car: Car) => brand === this.ALL_CARS || car.brand === brand))
-      );
+        map((cars: Car[]) => cars.filter((car: Car) => brand === this.ALL_CARS || car.brand === brand)),
+        // map((cars: Car[]) => cars.filter((car: Car) => gender === this.MEN_SHIRTS || car.gender === 'male'))
+      )
+      // .pipe(
+      //   map((cars: Car[]) => cars.filter((car: Car) => gender === this.MEN_SHIRTS || car.gender === 'female'))
+      // );
   }
+
 
   public modifyCar(car: Car): void {
     this.http.put(`${this.URL}/cars/${car.id}`, car)
