@@ -3,35 +3,47 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  // margin-block-start: 15px;
   align-items: center;
 }
 
 .example-card {
-  max-width: 600px;
+  max-width: 450px;
 }
 
 .btns-basket {
-  width: 100%;
-  background-color: yellowgreen;
+  width: 75%;
+  background-color: rgb(252, 89, 25);
   color: #fff;
+  cursor: url('https://api.iconify.design/zmdi:shopping-basket.svg'), auto;
+  &:hover {
+    background-color: #e9e500;
+  }
 }
 
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
 
 .price {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
+  // padding: 2px 0;
+  padding-bottom: 5px;
 
   &-val {
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 500;
-    color: #6b9517;
+    color: #29c701;
   }
 }
 
 .img-zoom img {
-  max-width: 330px;
+  max-width: 250px;
   // transform-origin: 50% 50%;
   // transition: transform .5s, filter .5s ease-in-out;
   transform-origin: 50% 50%;
@@ -44,7 +56,3 @@
 .img-zoom:hover img {
   transform: scale(1.7);
 }
-
-// img:hover{
-//   transform: scale(1.5);
-// }

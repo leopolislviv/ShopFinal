@@ -1,7 +1,7 @@
 $headerHieght: 60px;
 
 header {
-  background-color: #fdc9a6;
+  background-color: rgb(25, 190, 240);
   width: 100%;
   height: $headerHieght;
   display: flex;
@@ -52,7 +52,12 @@ header {
 
 .logo-container {
   height: $headerHieght;
-  background-color: #0fdeec;
+  background-color: #f3eb38;
+background-image: linear-gradient(120deg, #f3eb38 32%, #ff2145 100%);
+
+
+
+  // background-color: #0fdeec;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +120,7 @@ header {
 .basket {
   margin: 0 15px 0 15px;
   padding: 0 2px;
-  cursor: pointer;
+  // cursor: url('https://api.iconify.design/simple-line-icons:basket.svg'), auto;
 }
 
 .signup {
