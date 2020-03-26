@@ -57,11 +57,43 @@
 }
 
 img {
-  max-width: 300px;
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  max-width: 270px;
   border-radius: 2%;
   margin: auto;
   margin-bottom: 10px;
 }
+
+
+.img-overlay {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+}
+
+.overlay {
+  position: absolute; 
+  bottom: 10px; 
+  // background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.img-overlay:hover .overlay {
+  opacity: 1;
+}
+
 
 p {
   font-size: 15px;
