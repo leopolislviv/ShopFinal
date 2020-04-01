@@ -4,8 +4,8 @@ export interface Car {
   gender: string;
   brand: string;
   img: string;
-  size: string;
-  color: string;
+  size: string[];
+  color: string[];
   price: number;
   available: boolean;
 }

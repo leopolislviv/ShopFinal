@@ -12,14 +12,18 @@ import {CarComponent} from './shared/car/car.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'category/',
     pathMatch: 'full',
   },
   {
     path: 'category',
-    redirectTo: 'category/All cars',
+    redirectTo: 'category/All',
     pathMatch: 'full',
-  },
+  }, 
+  {
+    path: 'category',
+    component: CategoryComponent,
+  }, 
   {
     path: 'category/:cat',
     component: CategoryComponent,

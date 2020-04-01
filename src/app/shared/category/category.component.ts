@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {CrudService} from '../../services/crud.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {pluck, switchMap} from 'rxjs/operators';
+import {pluck, switchMap, tap} from 'rxjs/operators';
 import {Car} from '../../interfaces/car.interface';
+import {QueryParams} from '../../interfaces/query-params';
 
-import {PageEvent} from '@angular/material';
+// import {PageEvent} from '@angular/material';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-category',
@@ -13,52 +15,46 @@ import {PageEvent} from '@angular/material';
 })
 export class CategoryComponent {
 
-  public cars: Car[];
-
-   // MatPaginator Inputs
-  //  length = 1000;
-  //  pageSize = 10;
-  //  pageSizeOptions: number[] = [5, 10, 25];
- 
-   // MatPaginator Output
-  //  pageEvent: PageEvent;
-  //  datasource = [];
-  //  activePageDataChunk = []
+  public cars: QueryParams[];
+  // public cars$: Observable<Car[]>
 
   constructor(
     private crudService: CrudService,
     private route: ActivatedRoute,
     private router: Router,
-  ) {
-    this.route.paramMap
-      .pipe(
-        pluck('params', 'cat'),
-        switchMap((param) => this.crudService.getFilteredCars(param, param)),
-        //switchMap((param) => this.crudService.getFilteredGenderMale(param)),
-      )
-      .subscribe(
-        (cars: Car[]) =>  this.cars = cars,
-      );
-
-      // this.activePageDataChunk = this.datasource.slice(0,this.pageSize);
-
+  ) 
+  {
+    this.route.queryParamMap
+    .pipe(
+      pluck('params'),
+      switchMap((params: QueryParams) => this.crudService.getFilteredCars(params)),
+    )
+    .subscribe(
+      (cars: Car[]) => {
+        this.cars = cars;
+      },
+    )
   }
+//   {
+//     this.cars$=this.route.queryParams
+//       .pipe(
+//         tap(p=>console.log(p)),
+//         pluck('params', 'cat'),
+//         switchMap((param: string) => {
+//           if(param==='all') {
+//             return this.crudService.getAllTshirts()
+//           }
+//           return this.crudService.getFilteredCars(param)
+//         }
+//         ),
+//       )
+//       // .subscribe(
+//       //   (cars: Car[]) =>  this.cars = cars,
+//       // );
+// // console.log('category')
+//       // this.activePageDataChunk = this.datasource.slice(0,this.pageSize);
 
-
-
-  // setPageSizeOptions(setPageSizeOptionsInput: string) {
-  //   this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  // }
-
-  // onPageChanged(e) {
-  //   let firstCut = e.pageIndex * e.pageSize;
-  //   let secondCut = firstCut + e.pageSize;
-  //   this.activePageDataChunk = this.datasource.slice(firstCut, secondCut);
-  // }
-
-
-
-
+//   }
   public redirectToCar(id: number): void {
     this.router.navigate(['car', id]);
   }

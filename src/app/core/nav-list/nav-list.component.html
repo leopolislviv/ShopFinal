@@ -1,12 +1,43 @@
 <div class="container">
   <mat-list role="list">
     <mat-list-item
-      *ngFor="let model of models | async"
+      
       class="list-item"
       role="listitem"
       routerLinkActive="active-link"
-      [routerLink]="['category', model]">
-      {{model}}
+      routerLink="/category"
+    > All T-shirts
     </mat-list-item>
+
+    <mat-list-item
+      class="list-item"
+      role="listitem"
+      routerLinkActive="active-link"
+      routerLink="/category"
+      [queryParams]="{available: true}"
+    > Available T-shirts
+    </mat-list-item>
+
+    <mat-list-item
+    class="list-item"
+    role="listitem"
+    routerLinkActive="active-link"
+    routerLink="/category"
+    [queryParams]="{ available: false }"
+  >
+    Not available T-shirts
+  </mat-list-item>
+
+  <mat-list-item
+      *ngFor="let brand of brands | async"
+      class="list-item"
+      role="listitem"
+      routerLinkActive="active-link"
+      routerLink="/category"
+      [queryParams]="{ brand: brand }"
+      >
+      {{ brand }}
+    </mat-list-item>
+
   </mat-list>
 </div>

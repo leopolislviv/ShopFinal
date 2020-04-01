@@ -9,10 +9,16 @@ import {Observable} from 'rxjs';
 })
 export class NavListComponent {
 
-  public models: Observable<any>;
+  public brands: Observable<string[]>;
 
   constructor(private crudService: CrudService) {
-    this.models = this.crudService.navList;
+    this.brands = this.crudService.navList;
   }
+
+public getParams(brand: string):any {
+  return {
+    brand
+  }
+}
 
 }
