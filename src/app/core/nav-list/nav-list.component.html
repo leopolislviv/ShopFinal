@@ -14,8 +14,8 @@
       role="listitem"
       routerLinkActive="active-link"
       routerLink="/category"
-      [queryParams]="{available: true}"
-    > Available T-shirts
+      [queryParams]="{male: true}"
+    > Men T-shirts
     </mat-list-item>
 
     <mat-list-item
@@ -23,9 +23,9 @@
     role="listitem"
     routerLinkActive="active-link"
     routerLink="/category"
-    [queryParams]="{ available: false }"
+    [queryParams]="{ female: true }"
   >
-    Not available T-shirts
+    Women T-shirts
   </mat-list-item>
 
   <mat-list-item

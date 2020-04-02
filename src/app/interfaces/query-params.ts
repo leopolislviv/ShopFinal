@@ -1,4 +1,6 @@
 export interface QueryParams {
     brand?: string;
-    available?: boolean
+    available?: boolean;
+    male?: boolean;
+    female?: boolean;
   }

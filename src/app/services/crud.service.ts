@@ -43,8 +43,12 @@ export class CrudService {
     return this.http.get(`${this.URL}/cars`)
       .pipe(
         map((cars: Car[]) => {
-          if (params.hasOwnProperty('available')) {
-            return cars.filter((car: Car) => params.available ? car.available : !car.available);
+          if (params.hasOwnProperty('male')) {
+            return cars.filter((car: Car) => params.male ? car.male : !car.male);
+          }
+
+          if (params.hasOwnProperty('female')) {
+            return cars.filter((car: Car) => params.female ? car.female : !car.female);
           }
 
           if (params.hasOwnProperty('brand')) {
