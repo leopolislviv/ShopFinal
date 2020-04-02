@@ -13,6 +13,7 @@ import {QueryParams} from '../../interfaces/query-params';
 export class CategoryComponent {
 
   public cars: QueryParams[];
+  public searchColor = '';
 
   constructor(
     private crudService: CrudService,

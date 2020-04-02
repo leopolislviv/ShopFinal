@@ -16,6 +16,7 @@ import {PipeModule} from '../pipes/pipe.module';
 import { CarComponent } from './car/car.component';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SearchPipe } from '../pipes/search.pipe';
 
 const comp: any = [
   CategoryComponent,
@@ -26,7 +27,7 @@ const comp: any = [
 
 
 @NgModule({
-  declarations: [...comp, NotFoundComponent, CarComponent],
+  declarations: [...comp, NotFoundComponent, CarComponent, SearchPipe],
   exports: [...comp],
   imports: [
     CommonModule,

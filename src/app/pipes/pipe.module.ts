@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CurrencyPipe} from './currency.pipe';
 import {YearPipe} from './year.pipe';
+// import { SearchPipe } from './search.pipe';
 
 
 
@@ -9,6 +10,7 @@ import {YearPipe} from './year.pipe';
   declarations: [
     CurrencyPipe,
     YearPipe,
+    // SearchPipe,
   ],
   exports: [
     CurrencyPipe,

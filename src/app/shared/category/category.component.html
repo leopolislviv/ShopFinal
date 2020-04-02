@@ -1,6 +1,37 @@
+<!-- <form action="#" class="choose">
+  <p>
+    <label>
+      <input type="checkbox" />
+      <span>Red</span>
+    </label>
+    <label>
+      <input type="checkbox" />
+      <span>White</span>
+    </label>
+    <label>
+      <input type="checkbox" />
+      <span>Blue</span>
+    </label>
+    <label>
+      <input type="checkbox" />
+      <span>Black</span>
+    </label>
+  </p>
+</form> -->
+
+<div class="row">
+  <div class="input-field col s6">
+    <input id="first_name2" class="validate" [(ngModel)]="searchColor">
+    <label class="active" for="first_name">Choose a color</label>
+  </div>
+</div>
+
 <div class="category-container">
+  
+  
+  
   <mat-card
-    *ngFor="let car of cars"
+    *ngFor="let car of cars | search:searchColor"
     class="example-card">
     <mat-card-header>
       <mat-card-title>{{ car.brand }}</mat-card-title>
