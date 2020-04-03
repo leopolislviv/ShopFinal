@@ -21,26 +21,27 @@
             </thead>
             <tbody>
               <tr *ngFor="let cart of cartList;let i = index">
-                <td><img [src]="cart.tshirt.img" class="img-fluid" alt="" width="100px" height="100px"> </td>
-                <td>{{ cart.tshirt.brand }}</td>
-                <td>{{ cart.tshirt.price | currency: 'UAH'}}</td>
-                <!-- <td><bs-quantity-control [quantity]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></bs-quantity-control></td> -->
-                <td class="text-right">{{cart.quantity*cart.tshirt.price | currency: 'UAH' }}</td>
+                <td><img src={{cart.car.img}} class="img-fluid" alt="" width="200px" height="200px"> </td>
+                <td>{{ cart.car.brand }}</td>
+                <td>{{ cart.car.price }}</td>
+                <td><app-quality-control [(quantity)]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></app-quality-control></td>
+                <td class="text-right">{{cart.quantity*cart.car.price }}</td>
                 <td><div class="item-remove" (click)="removeFromCart(i)">X</div></td>
               </tr>
+              <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td> -->
+                <!-- <td colspan="2" class="text-right">Sub-Total</td> -->
+                <!-- <td class="text-right">{{totalPrice}}</td> -->
+              <!-- </tr> -->
               <tr>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td colspan="2" class="text-right">Sub-Total</td>
-                <td class="text-right">{{totalPrice | currency :'UAH'}}</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
+                
                 <td></td>
                 <td colspan="2" class="text-right"><strong>Total</strong></td>
-                <td class="text-right"><strong>{{totalPrice | currency :'UAH'}}</strong></td>
+                <td class="text-right"><strong>{{totalPrice }}</strong></td>
+                <td></td>
               </tr>
             </tbody>
           </table>

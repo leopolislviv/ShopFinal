@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, EventEmitter} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {filter, map } from 'rxjs/operators';
 import {Observable, BehaviorSubject} from 'rxjs';
@@ -89,6 +89,8 @@ reloadCart(cartList: ICart[]) {
 clearCart() {
   this.cartListSuject.next([]);
 }
+
+public cartChanged: EventEmitter<Car> = new EventEmitter<Car>();
   //
 
 }

@@ -46,12 +46,13 @@
     </mat-card-content>
     <div class="price">
       <!-- <span class="price-val">{{ car.year | year }}</span> -->
-      <span class="price-val">{{ car.price | currency:'UAH':'symbol-narrow':'ua' }}</span>
+      <span class="price-val">{{ car.price }}</span>
     </div>
     <mat-card-actions class="btns">
       <button
         mat-raised-button
-        class="btns-basket">
+        class="btns-basket"
+        (click)="addItemToCart(car)">
         Add to basket
       </button>
       <button

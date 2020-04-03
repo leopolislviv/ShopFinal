@@ -5,6 +5,7 @@ import {pluck, switchMap, tap} from 'rxjs/operators';
 import {Car} from '../../interfaces/car.interface';
 import {QueryParams} from '../../interfaces/query-params';
 import { ToastrService } from 'ngx-toastr';
+import { EventEmitter } from 'events';
 
 // import {ToastrService} from 'ngx-toastr';
 
@@ -17,6 +18,10 @@ export class CategoryComponent {
 
   public cars: QueryParams[];
   public searchColor = '';
+
+  //
+// public cartChanged: EventEmitter<> = new EventEmitter<Car>()
+  //
 
   constructor(
     private crudService: CrudService,
@@ -48,6 +53,10 @@ export class CategoryComponent {
     this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {
       timeOut: 2000
     })
+  }
+
+  addToCart(car: Car) {
+    this.crudService.cartChanged.emit(car);
   }
 // 
 

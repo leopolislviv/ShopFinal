@@ -19,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SearchPipe } from '../pipes/search.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { QualityControlComponent } from './quality-control/quality-control.component';
 
 const comp: any = [
   CategoryComponent,
@@ -29,7 +30,7 @@ const comp: any = [
 
 
 @NgModule({
-  declarations: [...comp, NotFoundComponent, CarComponent, SearchPipe],
+  declarations: [...comp, NotFoundComponent, CarComponent, SearchPipe, QualityControlComponent],
   exports: [...comp],
   imports: [
     CommonModule,
