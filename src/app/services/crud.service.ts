@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {filter, map } from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {Car} from '../interfaces/car.interface';
+import {Car, ICart} from '../interfaces/car.interface';
 import {QueryParams} from '../interfaces/query-params';
 
 @Injectable({
@@ -12,7 +12,9 @@ import {QueryParams} from '../interfaces/query-params';
 export class CrudService {
 
   private readonly URL: string = environment.apiUrl;
-  
+//
+  cartListSuject = new BehaviorSubject([]);
+//  
   constructor(private http: HttpClient) {}
 
   public get cars(): Observable<Car[]> {
@@ -54,29 +56,39 @@ export class CrudService {
           if (params.hasOwnProperty('brand')) {
             return cars.filter((car: Car) => car.brand === params.brand);
           }
-
-          
-
           return cars;
         }) 
       )
   }
-
-  // public getAllTshirts(): Observable<Car[]> {
-  //   return this.http.get(`${this.URL}/cars`)
-  //     .pipe(
-  //       map((cars: Car[]) => cars
-  //       )
-  //     )
-     
-  // }
-  
-
 
   public modifyCar(car: Car): void {
     this.http.put(`${this.URL}/cars/${car.id}`, car)
       .subscribe((res) => console.log(res));
   }
 
+
+  //
+addToCart(cart: ICart) {
+  let current = this.cartListSuject.getValue();
+  let dup = current.find(c => c.car.id === cart.car.id);
+  if (dup) dup.quantity += cart.quantity;
+  else current.push(cart);
+  this.cartListSuject.next(current);
+}
+
+removeCart(index: number) {
+  let current = this.cartListSuject.getValue();
+  current.splice(index, 1);
+  this.cartListSuject.next(current);
+}
+
+reloadCart(cartList: ICart[]) {
+  this.cartListSuject.next(cartList);
+}
+
+clearCart() {
+  this.cartListSuject.next([]);
+}
+  //
 
 }

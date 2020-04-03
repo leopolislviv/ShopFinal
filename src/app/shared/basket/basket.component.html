@@ -1,1 +1,66 @@
-<p>basket works!</p>
+<!-- <p>basket works!</p> -->
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">SHOPPING CART</h1>
+    </div>
+  </section>
+  <div class="container mb-4">
+    <div class="row" *ngIf="cartList.length > 0">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2" class="text-left">Product</th>
+                <th scope="col" class="text-right">Price</th>
+                <th scope="col" class="text-center">Quantity</th>
+                <th scope="col" class="text-center">Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cart of cartList;let i = index">
+                <td><img [src]="cart.tshirt.img" class="img-fluid" alt="" width="100px" height="100px"> </td>
+                <td>{{ cart.tshirt.brand }}</td>
+                <td>{{ cart.tshirt.price | currency: 'UAH'}}</td>
+                <!-- <td><bs-quantity-control [quantity]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></bs-quantity-control></td> -->
+                <td class="text-right">{{cart.quantity*cart.tshirt.price | currency: 'UAH' }}</td>
+                <td><div class="item-remove" (click)="removeFromCart(i)">X</div></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" class="text-right">Sub-Total</td>
+                <td class="text-right">{{totalPrice | currency :'UAH'}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2" class="text-right"><strong>Total</strong></td>
+                <td class="text-right"><strong>{{totalPrice | currency :'UAH'}}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col mb-2">
+        <div class="row">
+          <div class="col-sm-12  col-md-6">
+            <a class="btn btn-block btn-light" routerLink="/">Continue Shopping</a>
+          </div>
+          <div class="col-sm-12 col-md-6 text-right">
+            <a class="btn btn-lg btn-block btn-success text-uppercase" [routerLink]="['/checkout']">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="cart-page-content" *ngIf="cartList.length == 0">
+      <h4>Your cart is empty.</h4>
+      <a routerLink="/">Go shopping</a>
+    </div>
+  
+  </div>

@@ -11,3 +11,8 @@ export interface Car {
   male: boolean;
   female: boolean;
 }
+
+export interface ICart {
+  car: Car;
+  quantity: number;
+}

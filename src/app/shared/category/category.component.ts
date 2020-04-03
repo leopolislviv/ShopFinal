@@ -4,6 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap, tap} from 'rxjs/operators';
 import {Car} from '../../interfaces/car.interface';
 import {QueryParams} from '../../interfaces/query-params';
+import { ToastrService } from 'ngx-toastr';
+
+// import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-category',
@@ -19,6 +22,7 @@ export class CategoryComponent {
     private crudService: CrudService,
     private route: ActivatedRoute,
     private router: Router,
+    private toastrService: ToastrService,
   ) 
   {
     this.route.queryParamMap
@@ -36,4 +40,15 @@ export class CategoryComponent {
   public redirectToCar(id: number): void {
     this.router.navigate(['car', id]);
   }
+
+
+// 
+  addItemToCart(car: Car) {
+    this.crudService.addToCart({car, quantity: 1})
+    this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {
+      timeOut: 2000
+    })
+  }
+// 
+
 }

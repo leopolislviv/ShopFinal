@@ -22,14 +22,11 @@
 <div class="row">
   <div class="input-field col s6">
     <input id="first_name2" class="validate" [(ngModel)]="searchColor">
-    <label class="active" for="first_name">Choose a color</label>
+    <label class="active" for="first_name">Search for a color</label>
   </div>
 </div>
 
 <div class="category-container">
-  
-  
-  
   <mat-card
     *ngFor="let car of cars | search:searchColor"
     class="example-card">

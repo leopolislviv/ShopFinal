@@ -17,6 +17,8 @@ import { CarComponent } from './car/car.component';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SearchPipe } from '../pipes/search.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 const comp: any = [
   CategoryComponent,
@@ -42,7 +44,9 @@ const comp: any = [
     MatChipsModule,
     PipeModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ]
 })
 export class SharedModule {
