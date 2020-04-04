@@ -8,8 +8,6 @@ import { ToastrService } from 'ngx-toastr';
 import { EventEmitter } from 'events';
 import { CartService } from 'src/app/services/cart.service';
 
-// import {ToastrService} from 'ngx-toastr';
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -19,10 +17,6 @@ export class CategoryComponent {
 
   public cars: QueryParams[];
   public searchColor = '';
-
-  //
-// public cartChanged: EventEmitter<> = new EventEmitter<Car>()
-  //
 
   constructor(
     private crudService: CrudService,
