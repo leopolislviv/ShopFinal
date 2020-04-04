@@ -1,24 +1,25 @@
 import { ICart } from 'src/app/interfaces/car.interface';
 import { CrudService } from 'src/app/services/crud.service';
+import { CartService } from 'src/app/services/cart.service';
 
 
 export class ShoppingCart {
     public cartList: ICart[];
     public totalPrice: number;
 
-    constructor (protected crudService: CrudService) {
+    constructor (protected cartService: CartService) {
         this.loadCart();
     }
 
     loadCart() {
-        this.crudService.cartListSuject.subscribe(res => {
+        this.cartService.cart$.subscribe(res => {
             this.cartList = res;
             this.calculateTotal();
         });
     }
 
     removeFromCart (index: number) {
-        this.crudService.removeCart(index);
+        this.cartService.remove(index);
     }
 
     private calculateTotal() {

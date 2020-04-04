@@ -6,6 +6,7 @@ import {Car} from '../../interfaces/car.interface';
 import {QueryParams} from '../../interfaces/query-params';
 import { ToastrService } from 'ngx-toastr';
 import { EventEmitter } from 'events';
+import { CartService } from 'src/app/services/cart.service';
 
 // import {ToastrService} from 'ngx-toastr';
 
@@ -25,6 +26,7 @@ export class CategoryComponent {
 
   constructor(
     private crudService: CrudService,
+    private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
     private toastrService: ToastrService,
@@ -49,7 +51,7 @@ export class CategoryComponent {
 
 // 
   addItemToCart(car: Car) {
-    this.crudService.addToCart({car, quantity: 1})
+    this.cartService.add({car, quantity: 1})
     this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {
       timeOut: 2000
     })
@@ -58,6 +60,8 @@ export class CategoryComponent {
   addToCart(car: Car) {
     this.crudService.cartChanged.emit(car);
   }
+
+
 // 
 
 }
