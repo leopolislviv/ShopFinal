@@ -9,6 +9,8 @@ import { AuthService } from './auth.service';
 })
 export class CartService {
 
+  // public cartList: ICart[];
+  // public totalQ: number;
   
   public cart$ = new BehaviorSubject<ICart[]>([]);
   private storageKey: string;
@@ -54,5 +56,22 @@ export class CartService {
   }
 
 
+
+//   loadCart() {
+//     this.cart$.subscribe(res => {
+//         this.cartList = res;
+//         // this.calculateTotal();
+//         this.calculateQuantity()
+//     });
+// }
+
+//   private calculateQuantity() {
+//     let totalQuantity = 0;
+//     for (let cart of this.cartList) {
+//         totalQuantity += cart.quantity
+//     }
+//     this.totalQ = totalQuantity;
+//     // console.log(this.totalQ)
+// }
   
 }

@@ -28,20 +28,12 @@
                 <td class="text-right">{{cart.quantity*cart.car.price }}</td>
                 <td><div class="item-remove" (click)="removeFromCart(i)">X</div></td>
               </tr>
-              <!-- <tr>
-                <td></td>
-                <td></td>
-                <td></td> -->
-                <!-- <td colspan="2" class="text-right">Sub-Total</td> -->
-                <!-- <td class="text-right">{{totalPrice}}</td> -->
-              <!-- </tr> -->
               <tr>
                 <td></td>
-                
-                <td></td>
                 <td colspan="2" class="text-right"><strong>Total</strong></td>
+                <td class="text-right"><strong>{{totalQ }}</strong></td>
                 <td class="text-right"><strong>{{totalPrice }}</strong></td>
-                <td></td>
+                
               </tr>
             </tbody>
           </table>

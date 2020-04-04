@@ -6,6 +6,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class ShoppingCart {
     public cartList: ICart[];
     public totalPrice: number;
+    public totalQ: number;
 
     constructor (protected cartService: CartService) {
         this.loadCart();
@@ -15,6 +16,7 @@ export class ShoppingCart {
         this.cartService.cart$.subscribe(res => {
             this.cartList = res;
             this.calculateTotal();
+            this.calculateQuantity()
         });
     }
 
@@ -28,6 +30,15 @@ export class ShoppingCart {
             total += cart.car.price * cart.quantity;
         }
         this.totalPrice = total;
+    }
+
+    private calculateQuantity() {
+        let totalQuantity = 0;
+        for (let cart of this.cartList) {
+            totalQuantity += cart.quantity
+        }
+        this.totalQ = totalQuantity;
+        // console.log(this.totalQ)
     }
 
 }

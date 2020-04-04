@@ -121,8 +121,20 @@ background-image: linear-gradient(120deg, #f3eb38 32%, #ff2145 100%);
   margin: 0 15px 0 15px;
   padding: 0 2px;
   // cursor: url('https://api.iconify.design/simple-line-icons:basket.svg'), auto;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .signup {
   color: black;
 }
+
+label:hover {
+  cursor: pointer;
+}
+
+// .mat-badge-content{
+//   // background : black;
+//   // color: rgb(25, 190, 240);
+// }

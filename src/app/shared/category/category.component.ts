@@ -46,15 +46,17 @@ export class CategoryComponent {
 // 
   addItemToCart(car: Car) {
     this.cartService.add({car, quantity: 1})
-    this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {
-      timeOut: 2000
-    })
+    // alert('T-shirt successfully added to cart')
   }
 
   addToCart(car: Car) {
     this.crudService.cartChanged.emit(car);
+    this.toastrService.show('T-shirt successfully added to the cart', 'Add T-shirt to Cart')
   }
 
+  toastrMessage() {
+    this.toastrService.warning('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
+  }
 
 // 
 

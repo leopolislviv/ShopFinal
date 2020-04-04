@@ -17,6 +17,7 @@ export class BasketComponent extends ShoppingCart {
 
   changeQuantity(cart: ICart, quantity: number) {
     cart.quantity = quantity;
+    // console.log(cart.quantity)
     this.cartService.reload(this.cartList);
   }
 

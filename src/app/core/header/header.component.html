@@ -15,13 +15,13 @@
   <div class="options-panel">
     <div class="divider"></div>
 
-    <span
+    <label
       class="basket"
       matTooltip="В корзину"
       routerLink="/basket"
     >
-      <i class="material-icons">shopping_cart</i>
-    </span>
+      <i *ngIf="(isLogined$ | async)" class="material-icons" [matBadge]="totalQ" matBadgeColor="warn">shopping_cart</i>
+  </label>
 
     <div class="divider"></div>
 

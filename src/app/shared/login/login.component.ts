@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     }
     const {email, password} = this.loginForm.getRawValue();
     this.authService.login(email, password).subscribe(
-      () => this.router.navigate(['basket']),
+      () => this.router.navigate(['']),
       ({error}) => this.openSnackBar(error.message, 'Error !')
     );
 
