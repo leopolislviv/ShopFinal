@@ -7,6 +7,8 @@ import {QueryParams} from '../../interfaces/query-params';
 import { ToastrService } from 'ngx-toastr';
 import { EventEmitter } from 'events';
 import { CartService } from 'src/app/services/cart.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-category',
@@ -17,6 +19,7 @@ export class CategoryComponent {
 
   public cars: QueryParams[];
   public searchColor = '';
+  public isLogined$: BehaviorSubject<boolean>;
 
   constructor(
     private crudService: CrudService,
@@ -24,6 +27,7 @@ export class CategoryComponent {
     private route: ActivatedRoute,
     private router: Router,
     private toastrService: ToastrService,
+    private authService: AuthService,
   ) 
   {
     this.route.queryParamMap
@@ -36,6 +40,8 @@ export class CategoryComponent {
         this.cars = cars;
       },
     )
+
+    this.isLogined$ = this.authService.isLogined$;
   }
 
   public redirectToCar(id: number): void {
@@ -45,9 +51,14 @@ export class CategoryComponent {
 
 // 
   addItemToCart(car: Car) {
-    this.cartService.add({car, quantity: 1})
-    // alert('T-shirt successfully added to cart')
-  }
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!!user && !!user.email) {
+      return this.cartService.add({car, quantity: 1});
+    }
+
+    this.router.navigate(['login']);
+    return false;
+    }
 
   addToCart(car: Car) {
     this.crudService.cartChanged.emit(car);
@@ -57,7 +68,4 @@ export class CategoryComponent {
   toastrMessage() {
     this.toastrService.warning('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
   }
-
-// 
-
 }

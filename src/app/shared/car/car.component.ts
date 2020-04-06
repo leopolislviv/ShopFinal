@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Car} from '../../interfaces/car.interface';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap} from 'rxjs/operators';
 import {CrudService} from '../../services/crud.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -21,6 +21,7 @@ export class CarComponent {
     private crudService: CrudService,
     private cartService: CartService,
     private toastrService: ToastrService,
+    private router: Router,
   ) {
     this.route.paramMap
       .pipe(
@@ -34,10 +35,13 @@ export class CarComponent {
   }
 
 addItemToCart(car: Car) {
-  this.cartService.add({car, quantity: 1})
-  this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {
-    timeOut: 2000
-  })
+  const user = JSON.parse(localStorage.getItem('user'));
+    if (!!user && !!user.email) {
+      return this.cartService.add({car, quantity: 1});
+    }
+
+    this.router.navigate(['login']);
+    return false;
 }
 
 addToCart(car: Car) {

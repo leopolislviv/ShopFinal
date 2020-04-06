@@ -11,11 +11,11 @@
     </div>
     
     <mat-card-content>
-      <p>{{ car.size }}</p>
-      <p>{{ car.color }}</p>
+      <p>Size: {{ car.size }}</p>
+      <p>Color: {{ car.color }}</p>
     </mat-card-content>
     <div class="price">
-      <span class="price-val">{{ car.price | currency }}</span>
+      <span class="price-val">₴ {{ car.price }}</span>
     </div>
     <mat-card-actions>
       <button

@@ -34,7 +34,6 @@ export class HeaderComponent {
     this.user$ = this.authService.user$;
     this.loadCart();
     this.totalQ = this.shoppingService.totalQ;
-    // console.log(this.totalQ)
   }
 
   public logOut(): void {
@@ -47,7 +46,6 @@ export class HeaderComponent {
     this.cartService.cart$.subscribe(res => {
         this.cartList = res;
         this.calculateQuantity()
-        // console.log(this.totalQ)
     });
 }
 
@@ -57,7 +55,6 @@ export class HeaderComponent {
         totalQuantity += cart.quantity
     }
     this.totalQ = totalQuantity;
-    // console.log(this.totalQ)
 }
 
 }

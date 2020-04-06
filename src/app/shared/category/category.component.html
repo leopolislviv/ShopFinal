@@ -1,28 +1,7 @@
-<!-- <form action="#" class="choose">
-  <p>
-    <label>
-      <input type="checkbox" />
-      <span>Red</span>
-    </label>
-    <label>
-      <input type="checkbox" />
-      <span>White</span>
-    </label>
-    <label>
-      <input type="checkbox" />
-      <span>Blue</span>
-    </label>
-    <label>
-      <input type="checkbox" />
-      <span>Black</span>
-    </label>
-  </p>
-</form> -->
-
 <div class="row">
   <div class="input-field col s6">
-    <input id="first_name2" class="validate" [(ngModel)]="searchColor">
-    <label class="active" for="first_name">Search for a color</label>
+    <input id="first_name2" class="validate" placeholder="...start typing a color to choose from" [(ngModel)]="searchColor">
+    <!-- <label class="active" for="first_name">Start typing a color to choose from</label> -->
   </div>
 </div>
 
@@ -45,13 +24,15 @@
       <p>Color: {{ car.color }}</p>
     </mat-card-content>
     <div class="price">
-      <span class="price-val">{{ car.price }}</span>
+      <span class="price-val">₴ {{ car.price }}</span>
     </div>
     <mat-card-actions class="btns">
       <button
         mat-raised-button
+        
+        
         class="btns-basket"
-        (click)="addItemToCart(car); toastrMessage();">
+        (click)="addItemToCart(car)">
         Add to basket
       </button>
       <button
