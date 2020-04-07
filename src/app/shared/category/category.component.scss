@@ -131,3 +131,10 @@ width: 220px;
 label.active {
   color: lightslategray;
 }
+
+.toast-custom {
+  top: 12px; 
+    left: 50%; 
+    margin-left: -150px; 
+    position: fixed;
+}

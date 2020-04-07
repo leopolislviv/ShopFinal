@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~ngx-toastr/toastr.css';
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -10,3 +12,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 
 }
+
+// .toast-custom {
+//   top: 60px; 
+//     left: 50%; 
+//     // border-radius: 20%;
+//     // position: bottom-full-width;
+//     // width: 500px;
+//     // margin-left: -150px; 
+//     // position: fixed;
+// }

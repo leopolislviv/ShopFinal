@@ -48,8 +48,6 @@ export class CategoryComponent {
     this.router.navigate(['car', id]);
   }
 
-
-// 
   addItemToCart(car: Car) {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!!user && !!user.email) {
@@ -62,10 +60,19 @@ export class CategoryComponent {
 
   addToCart(car: Car) {
     this.crudService.cartChanged.emit(car);
-    this.toastrService.show('T-shirt successfully added to the cart', 'Add T-shirt to Cart')
   }
 
-  toastrMessage() {
-    this.toastrService.warning('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
-  }
+  showSuccess() {
+    const options = {
+      "progressBar": true,
+      "positionClass": "toast-bottom-center",
+      "showDuration": "800",
+      "hideDuration": "1000",
+      "showEasing": "show",
+      "hideEasing": "show",
+      "showMethod": "show",
+      
+    };
+    this.toastrService.success('T-shirt added to your cart!', 'Great!', options)
+  };
 }

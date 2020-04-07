@@ -3,6 +3,7 @@ import { User } from '../interfaces/user';
 import { Car, ICart } from '../interfaces/car.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,22 @@ export class CartService {
   
   public cart$ = new BehaviorSubject<ICart[]>([]);
   private storageKey: string;
+  
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private toastrService: ToastrService) {
     const user = authService.user$.getValue();
     this.init(user);
     authService.user$.subscribe(user => {
       this.init(user);
     })
   }
+
+  showSuccess(){
+    this.toastrService.success('Hello world!', 'Toastr fun!',{
+      disableTimeOut:true
+    })};
+
 
   private init (user: User) {
     this.storageKey = 'cart-' + (user ? user.email : 'default');
@@ -36,6 +45,7 @@ export class CartService {
     else current.push(cart);
     this.cart$.next(current);
     localStorage.setItem(this.storageKey, JSON.stringify(this.cart$.getValue()));
+    // this.toastrMessage();
   }
 
   remove(index: number) {
@@ -55,23 +65,7 @@ export class CartService {
     localStorage.removeItem(this.storageKey);
   }
 
-
-
-//   loadCart() {
-//     this.cart$.subscribe(res => {
-//         this.cartList = res;
-//         // this.calculateTotal();
-//         this.calculateQuantity()
-//     });
-// }
-
-//   private calculateQuantity() {
-//     let totalQuantity = 0;
-//     for (let cart of this.cartList) {
-//         totalQuantity += cart.quantity
-//     }
-//     this.totalQ = totalQuantity;
-//     // console.log(this.totalQ)
-// }
-  
+  toastrMessage() {
+    this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
+  }  
 }

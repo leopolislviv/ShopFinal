@@ -48,5 +48,18 @@ addToCart(car: Car) {
   this.crudService.cartChanged.emit(car);
 }
 
+showSuccess() {
+  const options = {
+    "progressBar": true,
+    "positionClass": "toast-bottom-center",
+    "showDuration": "800",
+    "hideDuration": "1000",
+    "showEasing": "show",
+    "hideEasing": "show",
+    "showMethod": "show",
+    
+  };
+  this.toastrService.success('T-shirt added to your cart!', 'Great!', options)
+};
   
 }

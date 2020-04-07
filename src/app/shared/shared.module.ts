@@ -20,6 +20,7 @@ import { SearchPipe } from '../pipes/search.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { QualityControlComponent } from './quality-control/quality-control.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 const comp: any = [
   CategoryComponent,
@@ -48,6 +49,8 @@ const comp: any = [
     MatPaginatorModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    BrowserModule
+    
   ]
 })
 export class SharedModule {
