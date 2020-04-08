@@ -22,6 +22,7 @@ export class HeaderComponent {
 
   public totalQ: number;
   public cartList: ICart[];
+  public hideMatBadge: boolean;
 
   constructor(
     private authService: AuthService,
@@ -34,11 +35,13 @@ export class HeaderComponent {
     this.user$ = this.authService.user$;
     this.loadCart();
     this.totalQ = this.shoppingService.totalQ;
+    this.hideMatBadge = true;
   }
 
   public logOut(): void {
     this.authService.logOut();
     this.router.navigate(['']);
+    this.hideMatBadge = true;
   }
 
 
@@ -55,6 +58,9 @@ export class HeaderComponent {
         totalQuantity += cart.quantity
     }
     this.totalQ = totalQuantity;
+    if (this.totalQ > 0) {
+      this.hideMatBadge = false;
+    } else {this.hideMatBadge = true}
 }
 
 }

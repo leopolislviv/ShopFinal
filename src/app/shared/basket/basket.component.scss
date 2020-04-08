@@ -1,7 +1,14 @@
 .cart-page-content {
-    max-width:940px;
-    margin:30px 70px;
-    background-color: white;
+    max-width:600px;
+    height: 300px;
+    margin:30px auto;
+    background-color: #e9ecef;
+    background-image: url('https://tyjara.com/assets/site/img/empty-cart.png');
+    // background-image: url('https://www.hiltonhymanhealthcare.com/empty_cart.png');
+    // background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     padding:60px;
 }
 .item-remove {
@@ -93,7 +100,7 @@ div.col-sm12.col-md6 {
     align-items: center;
 }
 
-.row .btn-light, .row .btn-success{
+.row .btn-light, .row .btn-success {
     margin-left: 10%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -112,9 +119,33 @@ border: none;
 transition: all 0.4s ease 0s;
 }
 
-.row .btn-light:hover, .row .btn-success:hover {
+.row .btn-light:hover, .row .btn-success:hover, .goShoping:hover {
 text-shadow: 0px 0px 6px rgb(255, 255, 255);
 -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.67);
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.67);
 transition: all 0.4s ease 0s;
+}
+
+.container.mb-4 .goShoping {
+    
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff !important;
+text-transform: uppercase;
+text-decoration: none;
+background: rgb(25, 190, 240);
+// padding: 20px;
+border-radius: 50px;
+// display: inline-block;
+border: none;
+transition: all 0.4s ease 0s;   
+
+position: relative;
+display: flex;
+margin: 280px auto;
+justify-content: center;
+align-items: center;
+
 }

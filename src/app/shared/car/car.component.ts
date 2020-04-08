@@ -37,6 +37,7 @@ export class CarComponent {
 addItemToCart(car: Car) {
   const user = JSON.parse(localStorage.getItem('user'));
     if (!!user && !!user.email) {
+      this.showSuccess()
       return this.cartService.add({car, quantity: 1});
     }
 
