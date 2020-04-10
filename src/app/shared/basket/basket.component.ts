@@ -25,7 +25,6 @@ private router: Router;
 
   changeQuantity(cart: ICart, quantity: number) {
     cart.quantity = quantity;
-    // console.log(cart.quantity)
     this.cartService.reload(this.cartList);
   }
 

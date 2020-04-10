@@ -2,6 +2,7 @@
   <div class="logo-container">
     <button
       matTooltip="Сховати бічну панель"
+      matTooltipPosition="after"
       class="side-nav-btn"
       (click)="toggleSideNav.emit()">
       <i class="material-icons icon-side-nav-btn">view_headline</i>
@@ -25,6 +26,21 @@
     >
       <i class="material-icons" [matBadge]="totalQ" [matBadgeHidden]="hideMatBadge" matBadgeColor="warn">shopping_cart</i>
   </label>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <i class="material-icons">keyboard_arrow_down</i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- <button
+        mat-menu-item
+        (click)="logOut()"
+        class="menu-item">
+        <i class="material-icons icon-logout">assignment_return</i>
+        <span>Logout</span>
+      </button> -->
+    </mat-menu>
+
+
 
     <div class="divider"></div>
 

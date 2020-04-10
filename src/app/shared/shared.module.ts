@@ -7,7 +7,7 @@ import {BasketComponent} from './basket/basket.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatInputModule, MatTooltipModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
@@ -49,8 +49,8 @@ const comp: any = [
     MatPaginatorModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    BrowserModule
-    
+    BrowserModule,
+    MatTooltipModule,
   ]
 })
 export class SharedModule {

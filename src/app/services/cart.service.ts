@@ -46,6 +46,7 @@ export class CartService {
     this.cart$.next(current);
     localStorage.setItem(this.storageKey, JSON.stringify(this.cart$.getValue()));
     // this.toastrMessage();
+    // додавати на сервер - зробити перевірку isLogined$, якщо залогінений, то і на сервері
   }
 
   remove(index: number) {

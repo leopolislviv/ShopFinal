@@ -1,7 +1,15 @@
 <div class="row">
   <div class="input-field col s6">
-    <input id="first_name2" class="validate" placeholder="...start typing a color to choose from" [(ngModel)]="searchColor">
+    <input id="first_name2" class="validate" placeholder="search by parameters - more info ->" [(ngModel)]="searchColor">
     <!-- <label class="active" for="first_name">Start typing a color to choose from</label> -->
+    <label
+    matTooltip="Колір: black, white, red...
+    Розмір: S; M; L; S,M; M,L ...
+    Наявність: true, false ..."
+    matTooltipPosition="after"
+    >
+    <i class="material-icons" id="help">help</i>
+    </label>
   </div>
 </div>
 
