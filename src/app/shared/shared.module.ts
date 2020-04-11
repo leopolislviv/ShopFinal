@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { QualityControlComponent } from './quality-control/quality-control.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CartPopupComponent } from './cart-popup/cart-popup.component';
 
 const comp: any = [
   CategoryComponent,

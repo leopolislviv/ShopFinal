@@ -118,7 +118,7 @@ background-image: linear-gradient(120deg, #f3eb38 32%, #ff2145 100%);
 }
 
 .basket {
-  margin: 0 -10px 0 15px;
+  margin: 0 0 0 15px;
   padding: 0 2px;
   // cursor: url('https://api.iconify.design/simple-line-icons:basket.svg'), auto;
   &:hover {
@@ -133,3 +133,11 @@ background-image: linear-gradient(120deg, #f3eb38 32%, #ff2145 100%);
 label:hover {
   cursor: pointer;
 }
+
+.mat-icon-button {
+  margin-top: -7px;
+}
+
+// .popupSize {
+//   width: 300px;
+// }

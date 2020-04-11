@@ -11,12 +11,14 @@ import {SharedModule} from '../shared/shared.module';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CartPopupComponent } from '../shared/cart-popup/cart-popup.component';
 
 
 const COMPONENTS: any = [
   LayoutComponent,
   HeaderComponent,
   NavListComponent,
+  CartPopupComponent,
 ]
 
 

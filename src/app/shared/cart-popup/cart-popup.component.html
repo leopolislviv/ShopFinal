@@ -1,0 +1,48 @@
+<div class="pop-cart-item" *ngFor="let cart of cartList;let i = index">
+    <div class="pop-cart-item-image-wrapper">
+      <img src={{cart.car.img}} class="img-fluid" alt="" />
+    </div>
+    <div class="pop-cart-item-details">
+      <h1 class="pop-cart-item-title">
+        <a href="http://localhost:4200/category/All?brand={{cart.car.brand}}">{{cart.car.brand}} 
+          <span class="pop-cart-item-quantity">×{{cart.quantity}}</span>
+        </a>
+      </h1>
+      <span class="pop-cart-item-brand">
+        {{cart.car.article}}
+      </span>
+      <span class="pop-cart-item-price">
+        ₴ {{cart.car.price}}
+      </span>
+    </div>
+    <div class="pop-cart-remove-wrapper">
+      <span (click)="removeFromCart(i)" class="cart-remove">X</span>
+    </div>
+  </div>
+  <div *ngIf="cartList.length > 0">
+    <div class="cart-total">
+      <div class="cart-total-item">
+        <span class="cart-total-label">
+          Total
+        </span>
+        <span class="cart-total-value">
+          ₴ {{totalPrice | number: '2.'}}
+        </span>
+      </div>
+    </div>
+    <footer class="quick-cart-footer">
+      <div class="quick-cart-footer-cell">
+        <button mat-raised-button color="primary" 
+        routerLink="/basket">
+          View Cart
+        </button>
+      </div>
+  
+      <div class="quick-cart-footer-cell1">
+        <button mat-raised-button color="accent" (click)="checkout()" routerLink="/">Checkout</button>
+      </div>
+    </footer>
+  </div>
+  <div *ngIf="cartList.length == 0">
+    <strong class="cart-empty">Your cart is empty</strong>
+  </div>

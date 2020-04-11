@@ -28,9 +28,13 @@
   </label>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <i class="material-icons">keyboard_arrow_down</i>
+      <i class="material-icons">arrow_drop_down</i>
+
     </button>
-    <mat-menu #menu="matMenu">
+    
+    <mat-menu #menu="matMenu" class="popupSize">
+        <!-- <ul class="sizePopup"> -->
+        <app-cart-popup></app-cart-popup>
       <!-- <button
         mat-menu-item
         (click)="logOut()"
@@ -38,8 +42,9 @@
         <i class="material-icons icon-logout">assignment_return</i>
         <span>Logout</span>
       </button> -->
+    <!-- </ul>  -->
     </mat-menu>
-
+  
 
 
     <div class="divider"></div>

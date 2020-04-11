@@ -35,7 +35,7 @@ export class HeaderComponent {
     this.user$ = this.authService.user$;
     this.loadCart();
     this.totalQ = this.shoppingService.totalQ;
-    this.hideMatBadge = true;
+    this.hideMatBadge = false;
   }
 
   public logOut(): void {
@@ -60,7 +60,8 @@ export class HeaderComponent {
     this.totalQ = totalQuantity;
     if (this.totalQ > 0) {
       this.hideMatBadge = false;
-    } else {this.hideMatBadge = true}
+    } 
+    else {this.hideMatBadge = true}
 }
 
 }

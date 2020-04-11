@@ -1,0 +1,133 @@
+.cart-empty {
+    float:right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.quick-cart-footer,
+.pop-cart-item {
+    display: table;
+    border-spacing: 8px 8px;
+    border-collapse: separate;
+    box-sizing: border-box;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.pop-cart-item-image-wrapper {
+    width: 70px;
+    display: table-cell;
+    vertical-align: top;
+}
+.pop-cart-item-image {
+    color: #1d1d20;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-fluid {
+    width: 80px;
+    height: auto;
+}
+
+.pop-cart-item-details {
+    display: table-cell;
+    vertical-align: top;
+    width: 120px;
+}
+
+.pop-cart-item-title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: Roboto;
+}
+.pop-cart-item-title a {
+    color: black;
+    letter-spacing: .1em;
+    text-decoration: none;
+}
+.pop-cart-item-title a:hover {
+    color: #99999b;
+}
+
+.pop-cart-item-quantity {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.pop-cart-item-brand {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    line-height: 1.5;
+    font-family: Roboto;
+    letter-spacing: .05em;
+    color: #9f9f9f;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.pop-cart-item-price {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+.pop-cart-remove-wrapper {
+   width: 18px;
+   height: 20px;
+   text-align: left;
+   display: table-cell;
+   vertical-align: top;
+}
+.pop-cart-remove-wrapper span{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.cart-total {
+    padding: 0 10px;
+}
+.cart-total-item {
+    padding-top: 10px;
+    border-top: 1px solid #e4e4e4;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 17px;
+    color: black;
+    font-weight: 700;
+    letter-spacing: .03em;
+}
+.cart-total-label {
+    float: left;
+    margin-left: 11px;
+}
+.cart-total-value {
+    float: right;
+    margin-right: 11px;
+}
+.quick-cart-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    // border-bottom: 1px solid #e4e4e4;
+}
+div.quick-cart-footer-cell {
+    display: inline-table;
+    margin: 8px 11px -3px 11px;
+}
+
+div.quick-cart-footer-cell1 {
+    display: inline-table;
+    margin: 8px 11px -3px 11px;
+}
