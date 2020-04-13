@@ -3,6 +3,7 @@ import { ShoppingCart } from '../basket/shopping.cart';
 import { CartService } from 'src/app/services/cart.service';
 import { ICart, Car } from 'src/app/interfaces/car.interface';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cart-popup',
@@ -14,6 +15,9 @@ export class CartPopupComponent extends ShoppingCart implements OnInit {
   private mathRandom = Math.floor(Math.random() * Math.floor(10000));
   private router: Router;
   public car: Car;
+
+myControl = new FormControl();
+options: string[] = ['One', 'Two', 'Three'];
 
   constructor(protected cartService: CartService) {
     super(cartService)

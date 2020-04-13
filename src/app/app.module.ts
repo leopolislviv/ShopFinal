@@ -8,6 +8,7 @@ import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSelectModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule } from '@angular/material';
 // import { ToastrModule } from 'ngx-toastr';
 
 // import { NgxImageZoomModule } from 'ngx-image-zoom';
@@ -24,6 +25,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     SharedModule,
     HttpClientModule,
     MatPaginatorModule,
+    // MatInputModule,
+    // MatSelectModule,
+    // MatFormFieldModule,
+    MatAutocompleteModule,
     // ToastrModule.forRoot()
     
     // NgxImageZoomModule
