@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Car} from '../../interfaces/car.interface';
+import {TShirt} from '../../interfaces/car.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap} from 'rxjs/operators';
 import {CrudService} from '../../services/crud.service';
@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CarComponent {
 
-  car: Car;
+  shirt: TShirt;
 
 
   constructor(
@@ -29,24 +29,24 @@ export class CarComponent {
         switchMap((id: string) => this.crudService.getCarById(id)),
       )
       .subscribe(
-        (car: Car) => this.car = car,
+        (shirt: TShirt) => this.shirt = shirt,
   );
   
   }
 
-addItemToCart(car: Car) {
+addItemToCart(shirt: TShirt) {
   const user = JSON.parse(localStorage.getItem('user'));
     if (!!user && !!user.email) {
       this.showSuccess()
-      return this.cartService.add({car, quantity: 1});
+      return this.cartService.add({shirt, quantity: 1});
     }
 
     this.router.navigate(['login']);
     return false;
 }
 
-addToCart(car: Car) {
-  this.crudService.cartChanged.emit(car);
+addToCart(shirt: TShirt) {
+  this.crudService.cartChanged.emit(shirt);
 }
 
 showSuccess() {

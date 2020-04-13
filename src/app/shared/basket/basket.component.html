@@ -19,11 +19,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let cart of cartList;let i = index">
-                <td><img src={{cart.car.img}} class="img-fluid" alt="" width="200px" height="200px"> </td>
-                <td>{{ cart.car.brand }}</td>
-                <td>{{ cart.car.price }}</td>
+                <td><img src={{cart.shirt.img}} class="img-fluid" alt="" width="200px" height="200px"> </td>
+                <td>{{ cart.shirt.brand }}</td>
+                <td>{{ cart.shirt.price }}</td>
                 <td><app-quality-control [(quantity)]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></app-quality-control></td>
-                <td class="text-right">{{cart.quantity*cart.car.price }}</td>
+                <td class="text-right">{{cart.quantity*cart.shirt.price }}</td>
                 <td><div class="item-remove" (click)="removeFromCart(i)">X</div></td>
               </tr>
               <tr>

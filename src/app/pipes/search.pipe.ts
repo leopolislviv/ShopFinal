@@ -5,12 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(cars, value): any {
-    if(!cars) return [];
-    return cars.filter(car => {
+  transform(shirts, value): any {
+    if(!shirts) return [];
+    return shirts.filter(shirt => {
       let search = '';
-      for(let key in car) {
-        search += car[key]
+      for(let key in shirt) {
+        search += shirt[key]
       }
       // console.log(search)
       return search.toLowerCase().includes(value.toLowerCase())

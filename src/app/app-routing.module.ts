@@ -29,7 +29,7 @@ const routes: Routes = [
     component: CategoryComponent,
   },
   {
-    path: 'car/:id',
+    path: 'shirt/:id',
     component: CarComponent,
   },
   {

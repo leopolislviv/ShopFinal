@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {filter, map } from 'rxjs/operators';
 import {Observable, BehaviorSubject} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {Car, ICart} from '../interfaces/car.interface';
+import {ICart, TShirt} from '../interfaces/car.interface';
 import {QueryParams} from '../interfaces/query-params';
 
 @Injectable({
@@ -17,52 +17,52 @@ export class CrudService {
 //  
   constructor(private http: HttpClient) {}
 
-  public get cars(): Observable<Car[]> {
-    return this.http.get(`${this.URL}/cars`).pipe(
-      map((cars: Car[]) => cars),
+  public get cars(): Observable<TShirt[]> {  //cars()
+    return this.http.get(`${this.URL}/shirts`).pipe(
+      map((shirts: TShirt[]) => shirts),
     );
   }
 
-  public getCarById(id: string): Observable<Car> {
-    return this.http.get(`${this.URL}/cars/${id}`).pipe(
+  public getCarById(id: string): Observable<TShirt> { //
+    return this.http.get(`${this.URL}/shirts/${id}`).pipe(
       filter(Boolean),
-      map((car: Car) => car),
+      map((shirt: TShirt) => shirt),
     );
   }
 
 
   public get navList(): Observable<string[]> {
-    return this.http.get(`${this.URL}/cars`)
+    return this.http.get(`${this.URL}/shirts`)
       .pipe(
-        map((cars: Car[]) => cars.map((car: Car) => car.brand)),
+        map((shirts: TShirt[]) => shirts.map((shirt: TShirt) => shirt.brand)),
         map((brands: string[]) => [...new Set(brands)]),
         map((brands: string[]) => brands.sort((a: string, b: string) => a > b ? 1 : -1)),
       );
   }
 
 
-  public getFilteredCars(params: QueryParams): Observable<Car[]> {
-    return this.http.get(`${this.URL}/cars`)
+  public getFilteredCars(params: QueryParams): Observable<TShirt[]> {
+    return this.http.get(`${this.URL}/shirts`)
       .pipe(
-        map((cars: Car[]) => {
+        map((shirts: TShirt[]) => {
           if (params.hasOwnProperty('male')) {
-            return cars.filter((car: Car) => params.male ? car.male : !car.male);
+            return shirts.filter((shirt: TShirt) => params.male ? shirt.male : !shirt.male);
           }
 
           if (params.hasOwnProperty('female')) {
-            return cars.filter((car: Car) => params.female ? car.female : !car.female);
+            return shirts.filter((shirt: TShirt) => params.female ? shirt.female : !shirt.female);
           }
 
           if (params.hasOwnProperty('brand')) {
-            return cars.filter((car: Car) => car.brand === params.brand);
+            return shirts.filter((shirt: TShirt) => shirt.brand === params.brand);
           }
-          return cars;
+          return shirts;
         }) 
       )
   }
 
-  public modifyCar(car: Car): void {
-    this.http.put(`${this.URL}/cars/${car.id}`, car)
+  public modifyCar(shirt: TShirt): void {
+    this.http.put(`${this.URL}/shirts/${shirt.id}`, shirt)
       .subscribe((res) => console.log(res));
   }
 
@@ -70,7 +70,7 @@ export class CrudService {
   //
 addToCart(cart: ICart) {
   let current = this.cartListSuject.getValue();
-  let dup = current.find(c => c.car.id === cart.car.id);
+  let dup = current.find(c => c.shirt.id === cart.shirt.id);
   if (dup) dup.quantity += cart.quantity;
   else current.push(cart);
   this.cartListSuject.next(current);
@@ -90,7 +90,7 @@ clearCart() {
   this.cartListSuject.next([]);
 }
 
-public cartChanged: EventEmitter<Car> = new EventEmitter<Car>();
+public cartChanged: EventEmitter<TShirt> = new EventEmitter<TShirt>();
   //
 
 }

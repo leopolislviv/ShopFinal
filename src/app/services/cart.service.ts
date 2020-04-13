@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
-import { Car, ICart } from '../interfaces/car.interface';
+import { TShirt, ICart } from '../interfaces/car.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -40,8 +40,8 @@ export class CartService {
 
   public add(cart: ICart) {
     let current = this.cart$.getValue();
-    let dup = current.find(c => c.car.id === cart.car.id);
-    if (dup) dup.quantity += cart.quantity;
+    let dup = current.find(c => c.shirt.id === cart.shirt.id);
+    if (dup) dup.quantity += cart.quantity; 
     else current.push(cart);
     this.cart$.next(current);
     localStorage.setItem(this.storageKey, JSON.stringify(this.cart$.getValue()));

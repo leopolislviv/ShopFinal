@@ -1,27 +1,27 @@
 <div class="car-container">
   <mat-card
-    *ngIf="car"
+    *ngIf="shirt"
     class="example-card">
     <mat-card-header>
-      <mat-card-title>{{ car.brand }}</mat-card-title>
-      <mat-card-subtitle>{{ car.article }}</mat-card-subtitle>
+      <mat-card-title>{{ shirt.brand }}</mat-card-title>
+      <mat-card-subtitle>{{ shirt.article }}</mat-card-subtitle>
     </mat-card-header>
     <div class="img-zoom">
-      <img mat-card-image src={{car.img}} alt="car">
+      <img mat-card-image src={{shirt.img}} alt="t-shirt">
     </div>
     
     <mat-card-content>
-      <p>Size: {{ car.size }}</p>
-      <p>Color: {{ car.color }}</p>
+      <p>Size: {{ shirt.size }}</p>
+      <p>Color: {{ shirt.color }}</p>
     </mat-card-content>
     <div class="price">
-      <span class="price-val">₴ {{ car.price }}</span>
+      <span class="price-val">₴ {{ shirt.price }}</span>
     </div>
     <mat-card-actions>
       <button
         mat-raised-button
         class="btns-basket"
-        (click)="addItemToCart(car)">
+        (click)="addItemToCart(shirt)">
         Add to basket
       </button>
     </mat-card-actions>

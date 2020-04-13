@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from '../basket/shopping.cart';
 import { CartService } from 'src/app/services/cart.service';
-import { ICart, Car } from 'src/app/interfaces/car.interface';
+import { ICart, TShirt } from 'src/app/interfaces/car.interface';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class CartPopupComponent extends ShoppingCart implements OnInit {
 
   private mathRandom = Math.floor(Math.random() * Math.floor(10000));
   private router: Router;
-  public car: Car;
+  public shirt: TShirt;
 
 myControl = new FormControl();
 options: string[] = ['One', 'Two', 'Three'];
@@ -29,7 +29,7 @@ options: string[] = ['One', 'Two', 'Three'];
   // }
 
   public redirectToCar(id: number): void {
-    this.router.navigate(['car', id]);
+    this.router.navigate(['shirt', id]);
   }
 
   checkout() {

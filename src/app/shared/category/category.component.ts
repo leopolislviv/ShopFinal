@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CrudService} from '../../services/crud.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap, tap} from 'rxjs/operators';
-import {Car} from '../../interfaces/car.interface';
+import {TShirt} from '../../interfaces/car.interface';
 import {QueryParams} from '../../interfaces/query-params';
 import { ToastrService } from 'ngx-toastr';
 import { EventEmitter } from 'events';
@@ -17,7 +17,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CategoryComponent {
 
-  public cars: QueryParams[];
+  public shirts: QueryParams[];
   public searchColor = '';
   public isLogined$: BehaviorSubject<boolean>;
 
@@ -36,8 +36,8 @@ export class CategoryComponent {
       switchMap((params: QueryParams) => this.crudService.getFilteredCars(params)),
     )
     .subscribe(
-      (cars: Car[]) => {
-        this.cars = cars;
+      (shirts: TShirt[]) => {
+        this.shirts = shirts;
       },
     )
 
@@ -45,22 +45,22 @@ export class CategoryComponent {
   }
 
   public redirectToCar(id: number): void {
-    this.router.navigate(['car', id]);
+    this.router.navigate(['shirt', id]);
   }
 
-  addItemToCart(car: Car) {
+  addItemToCart(shirt: TShirt) {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!!user && !!user.email) {
       this.showSuccess()
-      return this.cartService.add({car, quantity: 1});
+      return this.cartService.add({shirt, quantity: 1});
     }
 
     this.router.navigate(['login']);
     return false;
     }
 
-  addToCart(car: Car) {
-    this.crudService.cartChanged.emit(car);
+  addToCart(shirt: TShirt) {
+    this.crudService.cartChanged.emit(shirt);
   }
 
   showSuccess() {

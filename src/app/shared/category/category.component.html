@@ -15,24 +15,24 @@
 
 <div class="category-container">
   <mat-card
-    *ngFor="let car of cars | search:searchColor"
+    *ngFor="let shirt of shirts | search:searchColor"
     class="example-card">
     <mat-card-header>
-      <mat-card-title>{{ car.brand }}</mat-card-title>
-      <mat-card-subtitle>{{ car.article }}</mat-card-subtitle>
+      <mat-card-title>{{ shirt.brand }}</mat-card-title>
+      <mat-card-subtitle>{{ shirt.article }}</mat-card-subtitle>
     </mat-card-header>
     <div class="img-overlay">
-      <img mat-card-image src={{car.img}} alt="shirt"
-      (click)="redirectToCar(car.id)">
+      <img mat-card-image src={{shirt.img}} alt="shirt"
+      (click)="redirectToCar(shirt.id)">
       <div class="overlay">Click for details</div>
     </div>
     
     <mat-card-content>
-      <p>Size: {{ car.size }}</p>
-      <p>Color: {{ car.color }}</p>
+      <p>Size: {{ shirt.size }}</p>
+      <p>Color: {{ shirt.color }}</p>
     </mat-card-content>
     <div class="price">
-      <span class="price-val">₴ {{ car.price }}</span>
+      <span class="price-val">₴ {{ shirt.price }}</span>
     </div>
     <mat-card-actions class="btns">
       <button
@@ -40,13 +40,13 @@
         
         
         class="btns-basket"
-        (click)="addItemToCart(car)">
+        (click)="addItemToCart(shirt)">
         Add to basket
       </button>
       <button
         mat-raised-button
         class="btns-details"
-        (click)="redirectToCar(car.id)"
+        (click)="redirectToCar(shirt.id)"
         color="primary"
         >
         Details

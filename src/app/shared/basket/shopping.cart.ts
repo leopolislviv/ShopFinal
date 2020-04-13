@@ -27,7 +27,7 @@ export class ShoppingCart {
     private calculateTotal() {
         let total = 0;
         for (let cart of this.cartList) {
-            total += cart.car.price * cart.quantity;
+            total += cart.shirt.price * cart.quantity;
         }
         this.totalPrice = total;
     }

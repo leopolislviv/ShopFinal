@@ -1,4 +1,4 @@
-export interface Car {
+export interface TShirt {
   id: number;
   article: string;
   // gender: string;
@@ -13,6 +13,6 @@ export interface Car {
 }
 
 export interface ICart {
-  car: Car;
+  shirt: TShirt;
   quantity: number;
 }

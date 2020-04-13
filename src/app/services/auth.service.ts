@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../interfaces/user';
 import {filter, tap} from 'rxjs/operators';
-import { Car } from '../interfaces/car.interface';
+// import { Car } from '../interfaces/car.interface';
 // import { userInfo } from 'os';
 
 @Injectable({
@@ -23,9 +23,9 @@ export class AuthService {
     this.user$ = new BehaviorSubject<User>(user);
   }
 
-  public addBasket(email: string, car: object): Observable<any> {
-    return this.http.post(`${this.URL}/add-to-basket`, email, car) 
-  }
+  // public addBasket(email: string, car: object): Observable<any> {
+  //   return this.http.post(`${this.URL}/add-to-basket`, email, car) 
+  // }
 
   public singUp(user: User): Observable<any> {
     return this.http.post(`${this.URL}/signin`, user);
