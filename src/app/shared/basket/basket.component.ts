@@ -18,6 +18,8 @@ private authService: AuthService;
 private mathRandom = Math.floor(Math.random() * Math.floor(10000));
 private router: Router;
 // private userEmail: any;
+public selectedSize: number;
+public newSize: any;
 
   constructor(protected cartService: CartService) {
     super(cartService)
@@ -30,7 +32,7 @@ private router: Router;
 
   checkout() {
     
-    let check = confirm(`You have ordered ${this.totalQ} items with a total price UAH${this.totalPrice}. Do you want to Checkout?`)
+    let check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${this.totalPrice}. Do you want to Checkout?`)
     if(check==true) {
       alert(`Thanks for the order. Your order number is ${this.mathRandom}`);
     } else {
@@ -41,5 +43,17 @@ private router: Router;
     return true;
   }
 
+
+  selectChange (cart: ICart, event: any) {
+    let sizeNumber;
+    this.selectedSize = event.target.selectedIndex - 1
+    // this.sIndex = event.target.options
+    // console.log(this.selectedSize)
+    // console.log(this.cartList)
+
+      sizeNumber = cart.shirt.size
+      this.newSize = sizeNumber[this.selectedSize]
+      console.log(this.newSize)
+    }
 
 }

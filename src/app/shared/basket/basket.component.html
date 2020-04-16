@@ -11,6 +11,7 @@
             <thead>
               <tr>
                 <th scope="col" colspan="2" class="text-left">Product</th>
+                <th scope="col" class="text-right">Size</th>
                 <th scope="col" class="text-right">Price</th>
                 <th scope="col" class="text-center">Quantity</th>
                 <th scope="col" class="text-center">Total</th>
@@ -21,13 +22,25 @@
               <tr *ngFor="let cart of cartList;let i = index">
                 <td><img src={{cart.shirt.img}} class="img-fluid" alt="" width="200px" height="200px"> </td>
                 <td>{{ cart.shirt.brand }}</td>
+                <td>
+                  <div class="select-style">
+                      <select (change)="selectChange(cart, $event)">
+                        <option value="">{{cart.shirt.size}}</option>
+                        <option *ngIf="cart.shirt.size.length > 0" value="0">{{cart.shirt.size[0]}}</option>
+                        <option *ngIf="cart.shirt.size.length > 1" value="1">{{cart.shirt.size[1]}}</option>
+                        <option *ngIf="cart.shirt.size.length > 2" value="2">{{cart.shirt.size[2]}}</option>
+                        <option *ngIf="cart.shirt.size.length > 3" value="3">{{cart.shirt.size[3]}}</option>
+                        <option *ngIf="cart.shirt.size.length > 4" value="4">{{cart.shirt.size[4]}}</option>
+                      </select>
+                    </div>
+              </td>
                 <td>{{ cart.shirt.price }}</td>
                 <td><app-quality-control [(quantity)]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></app-quality-control></td>
                 <td class="text-right">{{cart.quantity*cart.shirt.price }}</td>
                 <td><div class="item-remove" (click)="removeFromCart(i)">X</div></td>
               </tr>
               <tr>
-                <td></td>
+                <td colspan="2"></td>
                 <td colspan="2" class="text-right"><strong>Total</strong></td>
                 <td class="text-right"><strong>{{totalQ }}</strong></td>
                 <td class="text-right"><strong>{{totalPrice | number: '2.'}}</strong></td>
