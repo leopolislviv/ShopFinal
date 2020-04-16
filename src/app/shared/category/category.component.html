@@ -1,7 +1,6 @@
 <div class="row">
   <div class="input-field col s6">
     <input id="first_name2" class="validate" placeholder="search by parameters - more info ->" [(ngModel)]="searchColor">
-    <!-- <label class="active" for="first_name">Start typing a color to choose from</label> -->
     <label
     matTooltip="Колір: black, white, red...
     Розмір: S; M; L; S,M; M,L ...
@@ -23,7 +22,7 @@
     </mat-card-header>
     <div class="img-overlay">
       <img mat-card-image src={{shirt.img}} alt="shirt"
-      (click)="redirectToCar(shirt.id)">
+      (click)="redirectToShirt(shirt.id)">
       <div class="overlay">Click for details</div>
     </div>
     
@@ -46,7 +45,7 @@
       <button
         mat-raised-button
         class="btns-details"
-        (click)="redirectToCar(shirt.id)"
+        (click)="redirectToShirt(shirt.id)"
         color="primary"
         >
         Details

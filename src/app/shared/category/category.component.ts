@@ -44,7 +44,7 @@ export class CategoryComponent {
     this.isLogined$ = this.authService.isLogined$;
   }
 
-  public redirectToCar(id: number): void {
+  public redirectToShirt(id: number): void {
     this.router.navigate(['shirt', id]);
   }
 

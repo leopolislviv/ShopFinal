@@ -15,6 +15,8 @@ export class CartService {
   
   public cart$ = new BehaviorSubject<ICart[]>([]);
   private storageKey: string;
+  public selectedSize: number;
+  public newSize: any;
   
 
   constructor(private authService: AuthService,
@@ -69,4 +71,17 @@ export class CartService {
   toastrMessage() {
     this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
   }  
+
+
+  selectChange (cart: ICart, event: any) {
+    let sizeNumber;
+    this.selectedSize = event.target.selectedIndex - 1
+    // this.sIndex = event.target.options
+    // console.log(this.selectedSize)
+    // console.log(this.cartList)
+
+      sizeNumber = cart.shirt.size
+      this.newSize = sizeNumber[this.selectedSize]
+      console.log(this.newSize)
+    }
 }

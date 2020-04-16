@@ -23,7 +23,7 @@ export class CrudService {
     );
   }
 
-  public getCarById(id: string): Observable<TShirt> { //
+  public getShirtById(id: string): Observable<TShirt> { //
     return this.http.get(`${this.URL}/shirts/${id}`).pipe(
       filter(Boolean),
       map((shirt: TShirt) => shirt),

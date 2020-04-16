@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TShirt} from '../../interfaces/car.interface';
+import {TShirt, ICart} from '../../interfaces/car.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap} from 'rxjs/operators';
 import {CrudService} from '../../services/crud.service';
@@ -14,6 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 export class CarComponent {
 
   shirt: TShirt;
+  public selectedSize: number;
+  public newSize: any;
 
 
   constructor(
@@ -26,7 +28,7 @@ export class CarComponent {
     this.route.paramMap
       .pipe(
         pluck('params', 'id'),
-        switchMap((id: string) => this.crudService.getCarById(id)),
+        switchMap((id: string) => this.crudService.getShirtById(id)),
       )
       .subscribe(
         (shirt: TShirt) => this.shirt = shirt,
@@ -62,5 +64,6 @@ showSuccess() {
   };
   this.toastrService.success('T-shirt added to your cart!', 'Great!', options)
 };
-  
+
+
 }

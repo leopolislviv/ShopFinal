@@ -27,6 +27,10 @@ export class AuthService {
   //   return this.http.post(`${this.URL}/add-to-basket`, email, car) 
   // }
 
+public addBasket(user: User): Observable<any> {
+    return this.http.post(`${this.URL}/add-to-basket`, user) 
+  }
+
   public singUp(user: User): Observable<any> {
     return this.http.post(`${this.URL}/signin`, user);
     // {email: user.email, car: car} - add

@@ -28,7 +28,7 @@ options: string[] = ['One', 'Two', 'Three'];
   //   this.cartService.reload(this.cartList);
   // }
 
-  public redirectToCar(id: number): void {
+  public redirectToShirt(id: number): void {
     this.router.navigate(['shirt', id]);
   }
 

@@ -7,6 +7,10 @@ export class ShoppingCart {
     public cartList: ICart[];
     public totalPrice: number;
     public totalQ: number;
+    // public selectedSize: number;
+    // public newSize;
+    public selectedSize: number;
+    public newSize: string;
 
     constructor (protected cartService: CartService) {
         this.loadCart();
@@ -40,5 +44,23 @@ export class ShoppingCart {
         this.totalQ = totalQuantity;
         // console.log(this.totalQ)
     }
+
+
+    selectChange (cart: ICart, event: any) {
+        let sizeNumber;
+        this.selectedSize = event.target.selectedIndex - 1
+        // this.sIndex = event.target.options
+        // console.log(this.selectedSize)
+        // console.log(this.cartList)
+    
+          sizeNumber = cart.shirt.size
+          this.newSize = sizeNumber[this.selectedSize]
+          console.log(this.newSize)
+        }
+
+    // private selectChange(event: any) {
+    //     this.selectedSize = event.target.value - 1;
+    //     console.log(this.selectedSize)
+    // }
 
 }
