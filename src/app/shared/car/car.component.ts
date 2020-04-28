@@ -35,14 +35,15 @@ export class CarComponent {
   }
 
 addItemToCart(shirt: TShirt) {
-  const user = JSON.parse(localStorage.getItem('user'));
-    if (!!user && !!user.email) {
-      this.showSuccess()
-      return this.cartService.add({shirt, quantity: 1});
-    }
+  this.cartService.add(shirt).subscribe(res => console.log(res))
+  // const user = JSON.parse(localStorage.getItem('user'));
+  //   if (!!user && !!user.email) {
+  //     this.showSuccess()
+  //     return this.cartService.add(cart);
+  //   }
 
-    this.router.navigate(['login']);
-    return false;
+  //   this.router.navigate(['login']);
+  //   return false;
 }
 
 addToCart(shirt: TShirt) {

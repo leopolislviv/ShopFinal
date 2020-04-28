@@ -21,7 +21,7 @@ export class HeaderComponent {
   public user$: BehaviorSubject<User>;
 
   public totalQ: number;
-  public cartList: ICart[];
+  public cartList: ICart[]; // or cartList: any
   public hideMatBadge: boolean;
 
   constructor(
@@ -46,9 +46,10 @@ export class HeaderComponent {
 
 
   loadCart() {
-    this.cartService.cart$.subscribe(res => {
-        this.cartList = res;
-        this.calculateQuantity()
+    // this.cartService.cart$.subscribe(res => {
+      this.cartService.getBasket().subscribe(res => {    
+      this.cartList = res;
+      this.calculateQuantity()
     });
 }
 
@@ -63,5 +64,9 @@ export class HeaderComponent {
     } 
     else {this.hideMatBadge = true}
 }
+
+  public get cartItemsCount(): BehaviorSubject<number>{
+    return this.cartService.cartItemsCount;
+  }
 
 }

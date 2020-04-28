@@ -49,14 +49,16 @@ export class CategoryComponent {
   }
 
   addItemToCart(shirt: TShirt) {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!!user && !!user.email) {
-      this.showSuccess()
-      return this.cartService.add({shirt, quantity: 1});
-    }
+    this.cartService.add(shirt).subscribe(res => console.log(res))  //shirt instead of shirt, quantity: 1
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // // const email = JSON.parse(localStorage.getItem('user'));
+    // if (!!user && !!user.email) {
+    //   this.showSuccess()
+    //   return this.cartService.add({shirt, quantity: 1});
+    // }
 
-    this.router.navigate(['login']);
-    return false;
+    // this.router.navigate(['login']);
+    // return false;
     }
 
   addToCart(shirt: TShirt) {

@@ -16,3 +16,7 @@ export interface ICart {
   shirt: TShirt;
   quantity: number;
 }
+
+export interface ICartResponse {
+  basket: ICart[];
+}

@@ -1,3 +1,6 @@
+<div *ngIf="cartList?.length">
+
+
 <div (click)="$event.stopPropagation()" class="pop-cart-item" *ngFor="let cart of cartList;let i = index" data-backdrop="false">
     <div class="pop-cart-item-image-wrapper">
       <img src={{cart.shirt.img}} class="img-fluid" alt="" />
@@ -19,7 +22,6 @@
         <div id="size">Size:</div>
         <div class="select-style">
         <select>
-          <!-- <option *ngIf="cart.car.size.length > 0" value="0">{{cart.car.size}}</option> -->
           <option *ngIf="cart.shirt.size.length > 0" value="0">{{cart.shirt.size[0]}}</option>
           <option *ngIf="cart.shirt.size.length > 1" value="1">{{cart.shirt.size[1]}}</option>
           <option *ngIf="cart.shirt.size.length > 2" value="2">{{cart.shirt.size[2]}}</option>
@@ -31,7 +33,7 @@
     </div>
 
     <div class="pop-cart-remove-wrapper">
-      <span (click)="removeFromCart(i)" class="cart-remove">X</span>
+      <span (click)="removeFromCart(cart)" class="cart-remove">X</span>
     </div>
   </div>
   <div *ngIf="cartList.length > 0">
@@ -58,6 +60,8 @@
       </div>
     </footer>
   </div>
-  <div *ngIf="cartList.length == 0">
+  <div *ngIf="cartList.length === 0">
     <strong class="cart-empty">Your cart is empty</strong>
   </div>
+
+</div>

@@ -8,3 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'comerce-example';
 }
+
+// setTimeout(() => window.open('/', 'test', 'width:200,height=100'), 1000);
