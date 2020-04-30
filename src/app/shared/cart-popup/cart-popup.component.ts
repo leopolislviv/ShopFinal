@@ -33,16 +33,23 @@ options: string[] = ['One', 'Two', 'Three'];
   }
 
   checkout() {
-    
-    let check = confirm(`You have ordered ${this.totalQ} items with a total price UAH${this.totalPrice}. Do you want to Checkout?`)
+    let newTotalPrice = this.totalPrice * 0.8;
+    let check;
+    console.log(newTotalPrice)
+    if(this.totalPrice >= 1000) {
+      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${newTotalPrice.toFixed()}. Do you want to Checkout?`)
+    } else {
+      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${this.totalPrice}. Do you want to Checkout?`)
+    }
     if(check==true) {
       alert(`Thanks for the order. Your order number is ${this.mathRandom}`);
     } else {
       return false
     }
     
-    this.cartService.clear();
-    return true;
+    // this.cartService.clear()
+    this.cartList.length = 0;
+    console.log(this.cartList)
   }
 
   ngOnInit() {

@@ -50,8 +50,11 @@
                 <td colspan="2"></td>
                 <td colspan="2" class="text-right"><strong>Total</strong></td>
                 <td class="text-right"><strong>{{totalQ }}</strong></td>
-                <td class="text-right"><strong>{{totalPrice | number: '2.'}}</strong></td>
-                
+                <td class="text-right" *ngIf="totalPrice <= 1000"><strong>{{totalPrice | number: '2.'}}</strong></td>
+                <td *ngIf="totalPrice <= 1000"></td>
+                <td class="text-right" *ngIf="totalPrice > 1000"><s>{{totalPrice | number: '2.'}}</s><font color="red"><strong>&nbsp;&nbsp;&nbsp;{{totalPrice *0.8 | number: '1.0-0' }}</strong></font></td>
+                <td colspan="1" *ngIf="totalPrice > 1000"><font color="limegreen"><strong>- ₴ {{totalPrice-(totalPrice*0.8) | number: '1.0-0'}}</strong></font></td>
+                <!-- <td class="text-right" *ngIf="totalPrice > 1000"><font color="red"><strong>{{totalPrice *0.8 | number: '1.0-0' }}</strong></font></td> -->
               </tr>
             </tbody>
           </table>

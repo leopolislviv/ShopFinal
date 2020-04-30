@@ -53,7 +53,7 @@ export class CategoryComponent {
     // const user = JSON.parse(localStorage.getItem('user'));
     // // const email = JSON.parse(localStorage.getItem('user'));
     // if (!!user && !!user.email) {
-    //   this.showSuccess()
+      this.showSuccess()
     //   return this.cartService.add({shirt, quantity: 1});
     // }
 

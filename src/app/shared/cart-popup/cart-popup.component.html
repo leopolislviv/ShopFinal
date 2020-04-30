@@ -42,9 +42,16 @@
         <span class="cart-total-label">
           Total
         </span>
-        <span class="cart-total-value">
+        <span class="cart-total-value" *ngIf="totalPrice <= 1000">
           ₴ {{totalPrice | number: '2.'}}
         </span>
+        
+        <span class="cart-total-value" *ngIf="totalPrice > 1000"><font color="red">
+            ₴ {{totalPrice * 0.8 | number: '1.0-0'}}</font>
+          </span>
+          <span class="cart-total-value" *ngIf="totalPrice > 1000"><s>
+              ₴ {{totalPrice | number: '2.'}}</s>
+            </span>
       </div>
     </div>
     <footer class="quick-cart-footer">

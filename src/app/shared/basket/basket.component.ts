@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from './shopping.cart';
 import { CrudService } from 'src/app/services/crud.service';
-import { ICart, TShirt } from 'src/app/interfaces/car.interface';
+import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/interfaces/user';
@@ -18,41 +18,36 @@ export class BasketComponent extends ShoppingCart {
 private authService: AuthService;
 private mathRandom = Math.floor(Math.random() * Math.floor(10000));
 private router: Router;
-// private userEmail: any;
 public selectedSize: number;
 public newSize: any;
 private lsUserKey: string = "user";
 public httpClient: HttpClient;
+public cart: ICart;
+public shirt: TShirt;
 
   constructor(protected cartService: CartService) {
     super(cartService)
   }
 
-  // changeQuantity(cart: ICart, quantity: number) {
-  //   cart.quantity = quantity;
-  //   this.cartService.reload(this.cartList);
-  // }
-
   checkout() {
-    
-    let check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${this.totalPrice}. Do you want to Checkout?`)
+    let newTotalPrice = this.totalPrice * 0.8;
+    let check;
+    // console.log(newTotalPrice)
+    if(this.totalPrice >= 1000) {
+      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${newTotalPrice.toFixed()}. Do you want to Checkout?`)
+    } else {
+      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${this.totalPrice}. Do you want to Checkout?`)
+    }
     if(check==true) {
       alert(`Thanks for the order. Your order number is ${this.mathRandom}`);
     } else {
       return false
     }
     
-    this.cartList = [];
+    this.cartService.clear()
+    this.cartList.length = 0;
     console.log(this.cartList)
-    // return true;
   }
-
-  // clear(cart: ICart) {
-  //   const user = JSON.parse(localStorage.getItem(this.lsUserKey))
-  //   const body = {shirt_all: cart.shirt, email: user.email, quantity: cart.quantity}
-  //   console.log(cart)
-  //   return this.httpClient.post('http://localhost:8080/remove-from-basket', body)
-  // }
 
   // addItemToCart(shirt: TShirt) {
   //   this.cartService.add(shirt).subscribe(res => console.log(res))

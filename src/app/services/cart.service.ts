@@ -13,9 +13,6 @@ import { map, tap } from 'rxjs/operators';
 })
 export class CartService {
 
-  // public cartList: ICart[];
-  // public totalQ: number;
-  
   public cart$ = new BehaviorSubject<ICart[]>([]);
   private lsBasketKey: string = "basket";
   private lsUserKey: string = "user";
@@ -33,12 +30,6 @@ export class CartService {
       this.init(user);
     })
   }
-
-  // showSuccess(){
-  //   this.toastrService.success('Hello world!', 'Toastr fun!',{
-  //     disableTimeOut:true
-  //   })};
-
 
   private init (user: User) {
     // this.storageKey = 'cart-' + (user ? user.email : 'default');

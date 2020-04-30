@@ -16,6 +16,12 @@
     </div>
   </div>
 
+  <div class="ticker-wrap">
+      <div class="ticker">
+      <div class="ticker__item">АКЦІЯ! Купи товарів на суму понад ₴ 1000 та отримай знижку 20%</div>
+      </div>
+  </div>
+
   <div class="options-panel">
     <div class="divider"></div>
 
@@ -24,7 +30,7 @@
       matTooltip="В корзину"
       routerLink="/basket"
     >
-      <i class="material-icons" [matBadge]="totalQ" [matBadgeHidden]="hideMatBadge" matBadgeColor="warn">shopping_cart</i>
+      <i class="material-icons" [matBadge]="cartItemsCount | async" [matBadgeHidden]="hideMatBadge" matBadgeColor="warn">shopping_cart</i>
   </label>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
