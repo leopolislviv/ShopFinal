@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TShirt} from '../../interfaces/car.interface';
+import {TShirt, ICart} from '../../interfaces/car.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {pluck, switchMap} from 'rxjs/operators';
 import {CrudService} from '../../services/crud.service';
@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CarComponent {
 
   shirt: TShirt;
+  cart: ICart;
 
 
   constructor(
@@ -63,5 +64,6 @@ showSuccess() {
   };
   this.toastrService.success('T-shirt added to your cart!', 'Great!', options)
 };
+
   
 }

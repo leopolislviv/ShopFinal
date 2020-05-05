@@ -5,7 +5,7 @@ import {pluck, switchMap, tap} from 'rxjs/operators';
 import {TShirt} from '../../interfaces/car.interface';
 import {QueryParams} from '../../interfaces/query-params';
 import { ToastrService } from 'ngx-toastr';
-import { EventEmitter } from 'events';
+// import { EventEmitter } from 'events';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { BehaviorSubject } from 'rxjs';
@@ -49,16 +49,8 @@ export class CategoryComponent {
   }
 
   addItemToCart(shirt: TShirt) {
-    this.cartService.add(shirt).subscribe(res => console.log(res))  //shirt instead of shirt, quantity: 1
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // // const email = JSON.parse(localStorage.getItem('user'));
-    // if (!!user && !!user.email) {
+    this.cartService.add(shirt).subscribe(res => console.log(res))
       this.showSuccess()
-    //   return this.cartService.add({shirt, quantity: 1});
-    // }
-
-    // this.router.navigate(['login']);
-    // return false;
     }
 
   addToCart(shirt: TShirt) {

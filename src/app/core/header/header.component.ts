@@ -33,7 +33,7 @@ export class HeaderComponent {
     this.toggleSideNav = new EventEmitter<void>();
     this.isLogined$ = this.authService.isLogined$;
     this.user$ = this.authService.user$;
-    this.loadCart();
+    // this.loadCart();
     this.totalQ = this.shoppingService.totalQ;
     this.hideMatBadge = false;
   }
@@ -45,28 +45,30 @@ export class HeaderComponent {
   }
 
 
-  loadCart() {
-    // this.cartService.cart$.subscribe(res => {
-      this.cartService.getBasket().subscribe(res => {    
-      this.cartList = res;
-      this.calculateQuantity()
-    });
-}
+  
 
-  private calculateQuantity() {
-    let totalQuantity = 0;
-    for (let cart of this.cartList) {
-        totalQuantity += cart.quantity
-    }
-    this.totalQ = totalQuantity;
-    if (this.totalQ > 0) {
-      this.hideMatBadge = false;
-    } 
-    else {this.hideMatBadge = true}
-}
+//   loadCart() {
+//     // this.cartService.cart$.subscribe(res => {
+//       this.cartService.getBasket().subscribe(res => {    
+//       this.cartList = res;
+//       this.calculateQuantity()
+//     });
+// }
+
+//   private calculateQuantity() {
+//     let totalQuantity = 0;
+//     for (let cart of this.cartList) {
+//         totalQuantity += cart.quantity
+//     }
+//     this.totalQ = totalQuantity;
+//     if (this.totalQ > 0) {
+//       this.hideMatBadge = false;
+//     } 
+//     else {this.hideMatBadge = true}
+// }
 
   public get cartItemsCount(): BehaviorSubject<number>{
     return this.cartService.cartItemsCount;
-  }
+  } 
 
 }

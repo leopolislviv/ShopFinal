@@ -176,21 +176,25 @@ $duration: 25s;
   position: fixed;
   top: 0;
   left: 200px;
-  width: 770px;
+  
+  width: 55%;
   overflow: hidden;
   height: $headerHieght;
   background-color: rgba(#000, 0); 
   // padding-left: 30%;
   box-sizing: content-box;
+  z-index: -1;
 
   .ticker {
-
+    height: 30px;
+    margin-top: 15px;
     display: inline-block;
-    height: 4rem;
-    line-height: 4rem;  
+    // height: 4rem;
+    // line-height: 60px;  
     white-space: nowrap;
     // padding-right: 30%;
     box-sizing: content-box;
+    
 
     -webkit-animation-iteration-count: infinite; 
             animation-iteration-count: infinite;
@@ -204,7 +208,7 @@ $duration: 25s;
     &__item {
 
       display: inline-block;
-
+      height: 30px;
       padding: 0 770px;
       font-size: 1.5rem;
       font-weight: 400;

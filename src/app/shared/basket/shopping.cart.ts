@@ -1,6 +1,7 @@
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
-import { CrudService } from 'src/app/services/crud.service';
+// import { CrudService } from 'src/app/services/crud.service';
 import { CartService } from 'src/app/services/cart.service';
+import { User } from 'src/app/interfaces/user';
 
 
 export class ShoppingCart {
@@ -21,12 +22,6 @@ export class ShoppingCart {
                 this.calculateQuantity();
                 console.log(this.cartList)
             });
-            
-        // this.cartService.cart$.subscribe(res => {
-        //     this.cartList = res;
-        //     this.calculateTotal();
-        //     this.calculateQuantity()
-        // });
     }
 
     removeFromCart (cart: ICart) {
@@ -37,6 +32,13 @@ export class ShoppingCart {
             this.calculateTotal();
             this.calculateQuantity();
         });
+    }
+
+    addToOrders(user: User) {
+        this.cartService.order(user).subscribe((newOrderList: ICartResponse) => {
+            console.log(newOrderList)
+            this.cartList = newOrderList.basket
+        })
     }
 
     public calculateTotal() {
@@ -71,10 +73,5 @@ export class ShoppingCart {
             this.calculateQuantity();
         })
     }
-
-    // clearAll() {
-    //     this.cartList = []
-    //     console.log(this.cartList)
-    // }
 
 }

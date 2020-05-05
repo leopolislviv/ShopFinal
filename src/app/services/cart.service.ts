@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
-// import { url } from 'inspector';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -14,7 +13,7 @@ import { map, tap } from 'rxjs/operators';
 export class CartService {
 
   public cart$ = new BehaviorSubject<ICart[]>([]);
-  private lsBasketKey: string = "basket";
+  // private lsBasketKey: string = "basket";
   private lsUserKey: string = "user";
   public cartItemsCount: BehaviorSubject<number>;
   
@@ -24,17 +23,25 @@ export class CartService {
     public httpClient: HttpClient
     ) {
     this.cartItemsCount = new BehaviorSubject(0);  
-    const user = authService.user$.getValue();
-    this.init(user);
-    authService.user$.subscribe(user => {
-      this.init(user);
-    })
+    // const user = authService.user$.getValue();
+    // this.init(user);
+    // authService.user$.subscribe(user => {
+    //   this.init(user);
+    // })
   }
 
-  private init (user: User) {
-    // this.storageKey = 'cart-' + (user ? user.email : 'default');
-    const cart  = JSON.parse(localStorage.getItem(this.lsBasketKey));
-    this.reload(cart || []);
+  // private init (user: User) {
+  //   const cart  = JSON.parse(localStorage.getItem(this.lsBasketKey));
+  //   this.reload(cart || []);
+  // }
+
+  public order(user: User) {
+    user = JSON.parse(localStorage.getItem(this.lsUserKey))
+    const body = {email: user.email, basket: user.basket}
+    return this.httpClient.post('http://localhost:8080/orders', body)
+    .pipe(
+      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
+    )
   }
 
   public add(cart: TShirt) {
@@ -42,28 +49,17 @@ export class CartService {
     const body = {shirt: cart, email: user.email}
     return this.httpClient.post('http://localhost:8080/add-to-basket', body)
     .pipe(
-      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(basketResponse.basket.length))
+      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
     )
-    // let current = this.cart$.getValue();
-    // let dup = current.find(c => c.shirt.id === cart.shirt.id);
-    // if (dup) dup.quantity += cart.quantity; 
-    // else current.push(cart);
-    // this.cart$.next(current);
-    // localStorage.setItem(this.storageKey, JSON.stringify(this.cart$.getValue()));
   }
   
   public remove(id: number, quantity?: number) {
-    // let current = this.cart$.getValue();
-    // current.splice(index, 1);
-    // this.cart$.next(current);
-    // localStorage.setItem(this.lsBasketKey, JSON.stringify(this.cart$.getValue()));
     const q: number = quantity ? quantity : 1;
     const user = JSON.parse(localStorage.getItem(this.lsUserKey))
     const body = {shirt_id: id, email: user.email, quantity: q}
-    // console.log(cart)
     return this.httpClient.post('http://localhost:8080/remove-from-basket', body)
     .pipe(
-      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(basketResponse.basket.length))
+      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
     )
   }
 
@@ -73,22 +69,28 @@ export class CartService {
     .pipe(
       map((users: User[]) => users.find((item: User) => item.email === user.email)),
       map((user: User) => user ? user.basket : null),
-      tap((basket: any) => this.cartItemsCount.next(basket.reduce((acc, item) => acc + item.quantity, 0))) 
+      tap((basket: any) => this.cartItemsCount.next(this.getBasketItemCounter(basket)) 
       )
+    )
   }
 
-  
-  reload(cartList: ICart[]) {
-    this.cart$.next(cartList);
-    localStorage.setItem(this.lsBasketKey, JSON.stringify(this.cart$.getValue()));
+  private getBasketItemCounter(basket: ICart[]): number {
+    return basket.reduce((acc, item) => acc + item.quantity, 0)
   }
   
-  clear() {
-    this.cart$.next([]);
-    localStorage.removeItem(this.lsBasketKey);
-  }
+  // reload(cartList: ICart[]) {
+  //   this.cart$.next(cartList);
+  //   localStorage.setItem(this.lsBasketKey, JSON.stringify(this.cart$.getValue()));
+  // }
+  
+  // clear() {
+  //   this.cart$.next([]);
+  //   localStorage.removeItem(this.lsBasketKey);
+  // }
 
-  toastrMessage() {
-    this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
-  }  
+  // toastrMessage() {
+  //   this.toastrService.info('T-shirt successfully added to the cart', 'Add T-shirt to Cart', {timeOut: 2000})
+  // }
+  
+  
 }

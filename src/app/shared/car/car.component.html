@@ -7,7 +7,9 @@
       <mat-card-subtitle>{{ shirt.article }}</mat-card-subtitle>
     </mat-card-header>
     <div class="img-zoom">
+      <a href={{shirt.img}} target="_blank" matTooltip="Open image" matTooltipPosition="right">
       <img mat-card-image src={{shirt.img}} alt="t-shirt">
+      </a>
     </div>
     
     <mat-card-content>
@@ -24,6 +26,7 @@
         (click)="addItemToCart(shirt)">
         Add to basket
       </button>
+
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from './shopping.cart';
-import { CrudService } from 'src/app/services/crud.service';
+// import { CrudService } from 'src/app/services/crud.service';
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
-import { AuthService } from 'src/app/services/auth.service';
+// import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/interfaces/user';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,15 +15,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BasketComponent extends ShoppingCart {
 
-private authService: AuthService;
+// private authService: AuthService;
 private mathRandom = Math.floor(Math.random() * Math.floor(10000));
-private router: Router;
+// private router: Router;
 public selectedSize: number;
 public newSize: any;
-private lsUserKey: string = "user";
+// private lsUserKey: string = "user";
 public httpClient: HttpClient;
 public cart: ICart;
 public shirt: TShirt;
+private user: User;
 
   constructor(protected cartService: CartService) {
     super(cartService)
@@ -32,7 +33,7 @@ public shirt: TShirt;
   checkout() {
     let newTotalPrice = this.totalPrice * 0.8;
     let check;
-    // console.log(newTotalPrice)
+    
     if(this.totalPrice >= 1000) {
       check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${newTotalPrice.toFixed()}. Do you want to Checkout?`)
     } else {
@@ -44,14 +45,12 @@ public shirt: TShirt;
       return false
     }
     
-    this.cartService.clear()
-    this.cartList.length = 0;
-    console.log(this.cartList)
-  }
+    this.addToOrders(this.user)
 
-  // addItemToCart(shirt: TShirt) {
-  //   this.cartService.add(shirt).subscribe(res => console.log(res))
-  //   }
+    // this.cartService.clear()
+    // this.cartList.length = 0;
+    // console.log(this.cartList)
+  }
 
   selectChange (cart: ICart, event: any) {
     let sizeNumber;
