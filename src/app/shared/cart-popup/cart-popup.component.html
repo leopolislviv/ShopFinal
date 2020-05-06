@@ -1,7 +1,7 @@
 <div *ngIf="cartList?.length">
 
 
-<div (click)="$event.stopPropagation()" class="pop-cart-item" *ngFor="let cart of cartList;let i = index" data-backdrop="false">
+<div class="pop-cart-item" *ngFor="let cart of cartList;let i = index" data-backdrop="false">
     <div class="pop-cart-item-image-wrapper">
       <img src={{cart.shirt.img}} class="img-fluid" alt="" />
     </div>

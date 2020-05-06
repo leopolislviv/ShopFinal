@@ -3,6 +3,7 @@ import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@a
 import {ErrorStateMatcher, MatSnackBar} from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
 import {Router} from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,11 +22,13 @@ export class LoginComponent implements OnInit {
   public hide = true;
   public loginForm: FormGroup;
   public matcher: MyErrorStateMatcher;
+  public cartList: any;
 
   constructor(
     private authService: AuthService,
     private matSnackBar: MatSnackBar,
     private router: Router,
+    private cartService: CartService,
   ) {
     this.hide = true;
     this.matcher = new MyErrorStateMatcher();
@@ -54,7 +57,8 @@ export class LoginComponent implements OnInit {
       () => this.router.navigate(['']),
       ({error}) => this.openSnackBar(error.message, 'Error !')
     );
-
+    this.cartService.getBasket().subscribe((res) => {
+      this.cartList = res
+  })
   }
-
 }

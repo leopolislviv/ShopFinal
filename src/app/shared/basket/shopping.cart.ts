@@ -73,5 +73,5 @@ export class ShoppingCart {
             this.calculateQuantity();
         })
     }
-
+ 
 }

@@ -13,7 +13,7 @@ export class CrudService {
 
   private readonly URL: string = environment.apiUrl;
 //
-  cartListSuject = new BehaviorSubject([]);
+  // cartListSuject = new BehaviorSubject([]);
 //  
   constructor(private http: HttpClient) {}
 
@@ -68,27 +68,27 @@ export class CrudService {
 
 
   //
-addToCart(cart: ICart) {
-  let current = this.cartListSuject.getValue();
-  let dup = current.find(c => c.shirt.id === cart.shirt.id);
-  if (dup) dup.quantity += cart.quantity;
-  else current.push(cart);
-  this.cartListSuject.next(current);
-}
+// addToCart(cart: ICart) {
+//   let current = this.cartListSuject.getValue();
+//   let dup = current.find(c => c.shirt.id === cart.shirt.id);
+//   if (dup) dup.quantity += cart.quantity;
+//   else current.push(cart);
+//   this.cartListSuject.next(current);
+// }
 
-removeCart(index: number) {
-  let current = this.cartListSuject.getValue();
-  current.splice(index, 1);
-  this.cartListSuject.next(current);
-}
+// removeCart(index: number) {
+//   let current = this.cartListSuject.getValue();
+//   current.splice(index, 1);
+//   this.cartListSuject.next(current);
+// }
 
-reloadCart(cartList: ICart[]) {
-  this.cartListSuject.next(cartList);
-}
+// reloadCart(cartList: ICart[]) {
+//   this.cartListSuject.next(cartList);
+// }
 
-clearCart() {
-  this.cartListSuject.next([]);
-}
+// clearCart() {
+//   this.cartListSuject.next([]);
+// }
 
 public cartChanged: EventEmitter<TShirt> = new EventEmitter<TShirt>();
   //

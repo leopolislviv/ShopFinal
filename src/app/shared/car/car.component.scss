@@ -55,7 +55,7 @@
 
 
 .img-zoom img {
-  max-width: 100%;
+  // max-width: 100%;
   transition: all 0.8s;
     display: block;
     height: auto;
@@ -64,4 +64,5 @@
 
 .img-zoom:hover img {
   transform: scale(1.9);
+  // max-height: 100%;
 }

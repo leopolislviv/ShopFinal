@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {User} from '../../interfaces/user';
 import { ICart } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
-import { ShoppingService } from 'src/app/services/shopping.service';
+// import { ShoppingService } from 'src/app/services/shopping.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,7 @@ export class HeaderComponent {
   public isLogined$: BehaviorSubject<boolean>;
   public user$: BehaviorSubject<User>;
 
-  public totalQ: number;
+  // public totalQ: number;
   public cartList: ICart[]; // or cartList: any
   public hideMatBadge: boolean;
 
@@ -28,14 +28,15 @@ export class HeaderComponent {
     private authService: AuthService,
     private router: Router,
     private cartService: CartService,
-    private shoppingService: ShoppingService,
+    // private shoppingService: ShoppingService,
   ) {
     this.toggleSideNav = new EventEmitter<void>();
     this.isLogined$ = this.authService.isLogined$;
     this.user$ = this.authService.user$;
     // this.loadCart();
-    this.totalQ = this.shoppingService.totalQ;
+    // this.totalQ = this.shoppingService.totalQ;
     this.hideMatBadge = false;
+    // this.loadCart()
   }
 
   public logOut(): void {
@@ -44,6 +45,15 @@ export class HeaderComponent {
     this.hideMatBadge = true;
   }
 
+//   loadCart() {
+//     this.cartService.getBasket()
+//     // .subscribe((res) => {
+//     //         this.cartList = res; //res.basket
+//     //         // this.calculateTotal();
+//     //         // this.calculateQuantity();
+//     //         console.log(this.cartList)
+//     //     });
+// }
 
   
 

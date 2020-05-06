@@ -28,6 +28,7 @@ private user: User;
 
   constructor(protected cartService: CartService) {
     super(cartService)
+    this.loadCart()
   }
 
   checkout() {
@@ -44,7 +45,7 @@ private user: User;
     } else {
       return false
     }
-    
+    this.loadCart()
     this.addToOrders(this.user)
 
     // this.cartService.clear()

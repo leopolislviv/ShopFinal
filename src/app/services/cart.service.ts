@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { TShirt, ICart, ICartResponse } from '../interfaces/car.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from './auth.service';
-import { ToastrService } from 'ngx-toastr';
+// import { AuthService } from './auth.service';
+// import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 
@@ -18,8 +18,9 @@ export class CartService {
   public cartItemsCount: BehaviorSubject<number>;
   
 
-  constructor(private authService: AuthService,
-    private toastrService: ToastrService,
+  constructor(
+    // private authService: AuthService,
+    // private toastrService: ToastrService,
     public httpClient: HttpClient
     ) {
     this.cartItemsCount = new BehaviorSubject(0);  
@@ -39,9 +40,9 @@ export class CartService {
     user = JSON.parse(localStorage.getItem(this.lsUserKey))
     const body = {email: user.email, basket: user.basket}
     return this.httpClient.post('http://localhost:8080/orders', body)
-    .pipe(
-      tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
-    )
+    // .pipe(
+    //   tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
+    // )
   }
 
   public add(cart: TShirt) {
