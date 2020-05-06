@@ -1,5 +1,4 @@
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
-// import { CrudService } from 'src/app/services/crud.service';
 import { CartService } from 'src/app/services/cart.service';
 import { User } from 'src/app/interfaces/user';
 
@@ -17,7 +16,7 @@ export class ShoppingCart {
 
     loadCart() {
         this.cartService.getBasket().subscribe((res) => {
-                this.cartList = res; //res.basket
+                this.cartList = res;
                 this.calculateTotal();
                 this.calculateQuantity();
                 console.log(this.cartList)

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from './shopping.cart';
-// import { CrudService } from 'src/app/services/crud.service';
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
-// import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/interfaces/user';
-// import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,12 +12,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BasketComponent extends ShoppingCart {
 
-// private authService: AuthService;
 private mathRandom = Math.floor(Math.random() * Math.floor(10000));
-// private router: Router;
 public selectedSize: number;
 public newSize: any;
-// private lsUserKey: string = "user";
 public httpClient: HttpClient;
 public cart: ICart;
 public shirt: TShirt;
@@ -47,10 +41,6 @@ private user: User;
     }
     this.loadCart()
     this.addToOrders(this.user)
-
-    // this.cartService.clear()
-    // this.cartList.length = 0;
-    // console.log(this.cartList)
   }
 
   selectChange (cart: ICart, event: any) {

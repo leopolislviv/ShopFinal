@@ -41,7 +41,6 @@
                          <p> {{cart.quantity}}</p>
                         <i class="material-icons" *ngIf="cart.quantity > 1" (click)="minusOne(cart.shirt)">remove_circle_outline</i>
                     </div>
-                  <!-- <app-quality-control [(quantity)]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></app-quality-control> -->
                 </td>
                 <td class="text-right">{{cart.quantity*cart.shirt.price }}</td>
                 <td><div class="item-remove" (click)="removeFromCart(cart)">X</div></td>
@@ -54,7 +53,6 @@
                 <td *ngIf="totalPrice <= 1000"></td>
                 <td class="text-right" *ngIf="totalPrice > 1000"><s>{{totalPrice | number: '2.'}}</s><font color="red"><strong>&nbsp;&nbsp;&nbsp;{{totalPrice *0.8 | number: '1.0-0' }}</strong></font></td>
                 <td colspan="1" *ngIf="totalPrice > 1000"><font color="limegreen"><strong>- ₴ {{totalPrice-(totalPrice*0.8) | number: '1.0-0'}}</strong></font></td>
-                <!-- <td class="text-right" *ngIf="totalPrice > 1000"><font color="red"><strong>{{totalPrice *0.8 | number: '1.0-0' }}</strong></font></td> -->
               </tr>
             </tbody>
           </table>
