@@ -4,6 +4,7 @@ import { TShirt, ICart, ICartResponse } from '../interfaces/car.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,16 @@ export class CartService {
   
 
   constructor(
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    public toastrService: ToastrService
     ) {
     this.cartItemsCount = new BehaviorSubject(0);  
   }
 
-  public order(user: User) {
-    user = JSON.parse(localStorage.getItem(this.lsUserKey))
-    const body = {email: user.email, basket: user.basket}
+  public order(cartList: ICart[]) {
+    const user = JSON.parse(localStorage.getItem(this.lsUserKey))
+    const body = {email: user.email, basket: cartList}
     return this.httpClient.post('http://localhost:8080/orders', body)
-    // .pipe(
-    //   tap((basketResponse: ICartResponse) => this.cartItemsCount.next(this.getBasketItemCounter(basketResponse.basket)))
-    // )
   }
 
   public add(cart: TShirt) {
@@ -64,4 +63,17 @@ export class CartService {
     return basket.reduce((acc, item) => acc + item.quantity, 0)
   }
   
+  public newShowSuccess() {
+    const options = {
+      "progressBar": true,
+      "positionClass": "toast-bottom-full-width",
+      "showDuration": "800",
+      "hideDuration": "1000",
+      "showEasing": "show",
+      "hideEasing": "show",
+      "showMethod": "show",
+    };
+  this.toastrService.success('Your order has been successfully registered', 'Thank you!', options)
+}
+
 }

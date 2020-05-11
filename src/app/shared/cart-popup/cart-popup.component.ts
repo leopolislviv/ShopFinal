@@ -59,7 +59,7 @@ export class CartPopupComponent extends ShoppingCart implements OnInit {
       return false
     }
 
-    this.addToOrders(this.user)
+    this.addToOrders(this.cartList)
     
     // this.cartService.clear()
     // this.cartList.length = 0;

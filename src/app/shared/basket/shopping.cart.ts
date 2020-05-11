@@ -1,6 +1,7 @@
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { User } from 'src/app/interfaces/user';
+import { HttpClient } from '@angular/common/http';
 
 
 export class ShoppingCart {
@@ -9,6 +10,7 @@ export class ShoppingCart {
     public totalQ: number;
     public cart: ICart;
     public shirt: TShirt;
+    public httpClient: HttpClient;
 
     constructor (protected cartService: CartService) {
         this.loadCart();
@@ -33,10 +35,10 @@ export class ShoppingCart {
         });
     }
 
-    addToOrders(user: User) {
-        this.cartService.order(user).subscribe((newOrderList: ICartResponse) => {
+    addToOrders(cartList: ICart[]) {
+        this.cartService.order(cartList).subscribe((newOrderList: ICartResponse) => {
             console.log(newOrderList)
-            this.cartList = newOrderList.basket
+            this.cartList = newOrderList
         })
     }
 
@@ -54,7 +56,6 @@ export class ShoppingCart {
             totalQuantity += cart.quantity
         }
         this.totalQ = totalQuantity;
-        console.log(this.totalQ)
     }
 
     public plusOne(shirt: TShirt) {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from './shopping.cart';
 import { ICart, TShirt, ICartResponse } from 'src/app/interfaces/car.interface';
 import { CartService } from 'src/app/services/cart.service';
-import { User } from 'src/app/interfaces/user';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,13 +11,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BasketComponent extends ShoppingCart {
 
-private mathRandom = Math.floor(Math.random() * Math.floor(10000));
+// private mathRandom = Math.floor(Math.random() * Math.floor(10000));
 public selectedSize: number;
 public newSize: any;
 public httpClient: HttpClient;
 public cart: ICart;
 public shirt: TShirt;
-private user: User;
 
   constructor(protected cartService: CartService) {
     super(cartService)
@@ -26,21 +24,8 @@ private user: User;
   }
 
   checkout() {
-    let newTotalPrice = this.totalPrice * 0.8;
-    let check;
-    
-    if(this.totalPrice >= 1000) {
-      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${newTotalPrice.toFixed()}. Do you want to Checkout?`)
-    } else {
-      check = confirm(`You have ordered ${this.totalQ} items with a total price UAH ${this.totalPrice}. Do you want to Checkout?`)
-    }
-    if(check==true) {
-      alert(`Thanks for the order. Your order number is ${this.mathRandom}`);
-    } else {
-      return false
-    }
-    this.loadCart()
-    this.addToOrders(this.user)
+    this.addToOrders(this.cartList)
+    this.cartService.newShowSuccess()
   }
 
   selectChange (cart: ICart, event: any) {
@@ -51,6 +36,5 @@ private user: User;
       this.newSize = sizeNumber[this.selectedSize]
       console.log(this.newSize)
     }
-
 
 }
